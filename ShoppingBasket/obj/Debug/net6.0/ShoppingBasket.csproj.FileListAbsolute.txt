@@ -1,0 +1,15 @@
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\bin\Debug\net6.0\ShoppingBasket.exe
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\bin\Debug\net6.0\ShoppingBasket.deps.json
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\bin\Debug\net6.0\ShoppingBasket.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\bin\Debug\net6.0\ShoppingBasket.dll
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\bin\Debug\net6.0\ShoppingBasket.pdb
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.dll
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\refint\ShoppingBasket.dll
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.pdb
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ShoppingBasket.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\ShoppingBasket\obj\Debug\net6.0\ref\ShoppingBasket.dll

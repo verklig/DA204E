@@ -1,0 +1,15 @@
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\bin\Debug\net6.0\CandyShop.exe
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\bin\Debug\net6.0\CandyShop.deps.json
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\bin\Debug\net6.0\CandyShop.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\bin\Debug\net6.0\CandyShop.dll
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\bin\Debug\net6.0\CandyShop.pdb
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.dll
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\refint\CandyShop.dll
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.pdb
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\CandyShop.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\CandyShop\obj\Debug\net6.0\ref\CandyShop.dll

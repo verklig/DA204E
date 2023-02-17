@@ -1,0 +1,15 @@
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\bin\Debug\net6.0\Exercise2bDoWhile.exe
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\bin\Debug\net6.0\Exercise2bDoWhile.deps.json
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\bin\Debug\net6.0\Exercise2bDoWhile.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\bin\Debug\net6.0\Exercise2bDoWhile.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\bin\Debug\net6.0\Exercise2bDoWhile.pdb
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\refint\Exercise2bDoWhile.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.pdb
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\Exercise2bDoWhile.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2bDoWhile\obj\Debug\net6.0\ref\Exercise2bDoWhile.dll

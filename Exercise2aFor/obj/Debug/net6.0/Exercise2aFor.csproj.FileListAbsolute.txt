@@ -1,0 +1,15 @@
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\bin\Debug\net6.0\Exercise2aFor.exe
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\bin\Debug\net6.0\Exercise2aFor.deps.json
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\bin\Debug\net6.0\Exercise2aFor.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\bin\Debug\net6.0\Exercise2aFor.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\bin\Debug\net6.0\Exercise2aFor.pdb
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\refint\Exercise2aFor.dll
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.pdb
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\Exercise2aFor.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\Exercise2aFor\obj\Debug\net6.0\ref\Exercise2aFor.dll

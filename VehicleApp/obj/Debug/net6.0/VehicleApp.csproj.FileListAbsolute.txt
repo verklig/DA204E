@@ -1,0 +1,15 @@
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\bin\Debug\net6.0\VehicleApp.exe
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\bin\Debug\net6.0\VehicleApp.deps.json
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\bin\Debug\net6.0\VehicleApp.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\bin\Debug\net6.0\VehicleApp.dll
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\bin\Debug\net6.0\VehicleApp.pdb
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.dll
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\refint\VehicleApp.dll
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.pdb
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\VehicleApp.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\VehicleApp\obj\Debug\net6.0\ref\VehicleApp.dll
