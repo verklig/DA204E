@@ -135,6 +135,7 @@ namespace GuessTheNumber
                 else
                 {
                     Console.WriteLine("Please use y/n!");
+                    Console.WriteLine();
                     done = false;
                 }
             }

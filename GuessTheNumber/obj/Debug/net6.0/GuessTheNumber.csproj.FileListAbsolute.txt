@@ -13,3 +13,18 @@ D:\Program\Microsoft Visual Studio\Repos\GuessTheNumber\obj\Debug\net6.0\refint\
 D:\Program\Microsoft Visual Studio\Repos\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.pdb
 D:\Program\Microsoft Visual Studio\Repos\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.genruntimeconfig.cache
 D:\Program\Microsoft Visual Studio\Repos\GuessTheNumber\obj\Debug\net6.0\ref\GuessTheNumber.dll
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\bin\Debug\net6.0\GuessTheNumber.exe
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\bin\Debug\net6.0\GuessTheNumber.deps.json
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\bin\Debug\net6.0\GuessTheNumber.runtimeconfig.json
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\bin\Debug\net6.0\GuessTheNumber.dll
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\bin\Debug\net6.0\GuessTheNumber.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.GeneratedMSBuildEditorConfig.editorconfig
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.AssemblyInfoInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.AssemblyInfo.cs
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.dll
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\refint\GuessTheNumber.dll
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\GuessTheNumber.genruntimeconfig.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\GuessTheNumber\obj\Debug\net6.0\ref\GuessTheNumber.dll

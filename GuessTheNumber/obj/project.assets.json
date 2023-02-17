@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Program\\Microsoft Visual Studio\\Repos\\GuessTheNumber\\GuessTheNumber.csproj",
+      "projectUniqueName": "D:\\Program\\Microsoft Visual Studio\\Repos\\C# DA204E\\GuessTheNumber\\GuessTheNumber.csproj",
       "projectName": "GuessTheNumber",
-      "projectPath": "D:\\Program\\Microsoft Visual Studio\\Repos\\GuessTheNumber\\GuessTheNumber.csproj",
+      "projectPath": "D:\\Program\\Microsoft Visual Studio\\Repos\\C# DA204E\\GuessTheNumber\\GuessTheNumber.csproj",
       "packagesPath": "C:\\Users\\ericb\\.nuget\\packages\\",
-      "outputPath": "D:\\Program\\Microsoft Visual Studio\\Repos\\GuessTheNumber\\obj\\",
+      "outputPath": "D:\\Program\\Microsoft Visual Studio\\Repos\\C# DA204E\\GuessTheNumber\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ericb\\AppData\\Roaming\\NuGet\\NuGet.Config",
