@@ -18,14 +18,16 @@ namespace GuessTheNumber
         {
             bool playAgain = false;
 
-            DisplayMenu();
-
             do
             {
+                DisplayMenu();
+
                 amtGuesses = 0;
                 currRandomNumber = GetRandomNumber();
+
                 AskPlayerUntilCorrect();
                 GameOver();
+
                 playAgain = DoYouWantToPlayAgain();
 
             } while (playAgain);
@@ -117,20 +119,22 @@ namespace GuessTheNumber
             bool answer = false;
             bool done = true;
 
-            Console.Write("Do you want to play again? (y/n); ");
-
             do
             {
+                Console.Write("Do you want to play again? (y/n): ");
+
                 string str = Console.ReadLine();
                 str = str.ToUpper();
 
                 if (str[0] == 'Y')
                 {
                     answer = true;
+                    done = true;
                 }
                 else if (str[0] == 'N')
                 {
                     answer = false;
+                    done = true;
                 }
                 else
                 {
@@ -140,8 +144,8 @@ namespace GuessTheNumber
                 }
             }
             while (!done);
-            Console.WriteLine();
 
+            Console.Clear();
             return answer;
         }
     }
