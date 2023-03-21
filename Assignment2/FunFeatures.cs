@@ -35,7 +35,7 @@ namespace Assignment2
                 CalculateTextLength();
 
                 repeat = DoAgain();
-            }while(repeat);
+            } while(repeat);
         }
 
         private void Info()

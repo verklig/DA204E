@@ -1,0 +1,11 @@
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\bin\Debug\Assignment3.exe.config
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\bin\Debug\Assignment3.exe
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\bin\Debug\Assignment3.pdb
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.csproj.SuggestedBindingRedirects.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.MainForm.resources
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.Properties.Resources.resources
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.csproj.GenerateResource.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.exe
+D:\Program\Microsoft Visual Studio\Repos\Assignment3\obj\Debug\Assignment3.pdb
