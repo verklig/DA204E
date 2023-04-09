@@ -460,9 +460,9 @@ namespace Assignment3
             int age = 0;
 
             bool ok = int.TryParse(txtAge.Text, out age);
-            if (!ok || age < 10)
+            if (!ok || age < 10 || age >= 100)
             {
-                MessageBox.Show("The age value is invalid! (lowest value is 10)", "Error");
+                MessageBox.Show("The age value is invalid! (lowest value is 10 and highest value is 99)", "Error");
                 ok = false;
                 return ok;
             }
