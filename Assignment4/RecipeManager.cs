@@ -24,6 +24,10 @@ namespace Assignment4
         //{
         //}
 
+        //private int FindVacantPosition()
+        //{
+        //}
+
         public bool Add(Recipe recipe)
         {
             int count = GetCurrentNumOfRecipes();
@@ -31,7 +35,6 @@ namespace Assignment4
             if (recipe != null && count < maxNumOfRecipes)
             {
                 recipeList[count] = recipe;
-                MessageBox.Show($"count: {count} recipe: {recipe.Name}");
                 return true;
             }
             else
@@ -42,7 +45,7 @@ namespace Assignment4
 
         public bool Add(string name, FoodCategory category, string[] ingredients)
         {
-            Recipe recipe = new Recipe(name, category.ToString(), ingredients);
+            Recipe recipe = new Recipe(name, category, ingredients);
 
             recipeList[GetCurrentNumOfRecipes()] = recipe;
 
@@ -68,6 +71,7 @@ namespace Assignment4
             if (CheckIndex(index))
             {
                 recipeList[index] = null;
+                MoveRecipesOneStepToLeft(index);
                 ok = true;
             }
 
@@ -90,7 +94,6 @@ namespace Assignment4
 
         public Recipe GetRecipeAt(int index)
         {
-            // TODO: recipeList gets duplicated values on add
             return recipeList[index];
         }
 
@@ -101,13 +104,9 @@ namespace Assignment4
             return ok;
         }
 
-        //private int FindVacantPosition()
-        //{
-        //}
-
         private void MoveRecipesOneStepToLeft(int index)
         {
-            for (int i = index; i < recipeList.Length - 2; i++)
+            for (int i = index; i < recipeList.Length - 1; i++)
             {
                 recipeList[i] = recipeList[i + 1];
             }

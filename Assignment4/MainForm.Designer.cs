@@ -1,4 +1,7 @@
-﻿namespace Assignment4
+﻿using System.Windows.Forms;
+using System;
+
+namespace Assignment4
 {
     partial class MainForm
     {
@@ -60,17 +63,21 @@
             // 
             // listRecipe
             // 
+            this.listRecipe.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listRecipe.FormattingEnabled = true;
+            this.listRecipe.ItemHeight = 16;
             this.listRecipe.Location = new System.Drawing.Point(327, 45);
             this.listRecipe.Name = "listRecipe";
-            this.listRecipe.Size = new System.Drawing.Size(444, 251);
+            this.listRecipe.Size = new System.Drawing.Size(444, 244);
             this.listRecipe.TabIndex = 1;
+            this.listRecipe.SelectedIndexChanged += new System.EventHandler(this.listRecipe_SelectedIndexChanged);
+            this.listRecipe.DoubleClick += new System.EventHandler(this.listRecipe_DoubleClick);
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(324, 13);
+            this.lblName.Location = new System.Drawing.Point(328, 13);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(44, 16);
             this.lblName.TabIndex = 2;
@@ -80,7 +87,7 @@
             // 
             this.lblCat2.AutoSize = true;
             this.lblCat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCat2.Location = new System.Drawing.Point(530, 13);
+            this.lblCat2.Location = new System.Drawing.Point(528, 13);
             this.lblCat2.Name = "lblCat2";
             this.lblCat2.Size = new System.Drawing.Size(62, 16);
             this.lblCat2.TabIndex = 3;
@@ -203,6 +210,7 @@
             this.btnClearSelection.TabIndex = 7;
             this.btnClearSelection.Text = "Clear Selection";
             this.btnClearSelection.UseVisualStyleBackColor = true;
+            this.btnClearSelection.Click += new System.EventHandler(this.btnClearSelection_Click);
             // 
             // btnEditBegin
             // 
@@ -222,6 +230,7 @@
             this.btnEditFinish.TabIndex = 9;
             this.btnEditFinish.Text = "Edit-Finish";
             this.btnEditFinish.UseVisualStyleBackColor = true;
+            this.btnEditFinish.Click += new System.EventHandler(this.btnEditFinish_Click);
             // 
             // btnDelete
             // 

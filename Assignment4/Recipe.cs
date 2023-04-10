@@ -10,12 +10,12 @@ namespace Assignment4
     {
 
         // TODO: change type from string to FoodCategory
-        private string category;
+        private FoodCategory category;
         private string name;
         private string description;
         private string[] ingredients;
 
-        public string Category { get { return category; } set { category = value; } }
+        public FoodCategory Category { get { return category; } set { category = value; } }
         public string Name { get { return name; } set { name = value; } }
         public string Description { get { return description; } set { description = value; } }
         public string[] Ingredients { get { return ingredients; } set { ingredients = value; } }
@@ -26,9 +26,11 @@ namespace Assignment4
             // ingredients = new Recipe[maxNumOfIngredients];
         }
 
-        public Recipe(string name, string category, string[] ingredients)
+        public Recipe(string name, FoodCategory category, string[] ingredients)
         {
-            
+            Name = name;
+            Category = category;
+            Ingredients = ingredients;
         }
 
         public int CurrentNumOfIngredients()
@@ -47,14 +49,30 @@ namespace Assignment4
                 amtIngredients = ingredients.Length;
             }
 
-            string strOut = $"{name,-60}{category,-50}{amtIngredients,-50}";
+            string strOut = $"{name,-25}{category,-21}{amtIngredients}";
+
             return strOut;
         }
 
+        public string ToStringDetailed()
+        {
+            string strOut = "INGREDIENTS\n";
+            
+            for (int i = 0; i < Ingredients.Length; i++)
+            {
+                if (i != Ingredients.Length - 1)
+                {
+                    strOut += ingredients[i] + ", ";
+                }
+                else
+                {
+                    strOut += ingredients[i];
+                }
+            }
 
+            strOut += "\n\n" + description;
 
-
-
-
+            return strOut;
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,6 +38,11 @@ namespace Assignment4
                 cboxCat.Items.Add(addCategory);
                 addCategory++;
             }
+
+            btnEditBegin.Enabled = false;
+            btnEditFinish.Enabled = false;
+            btnDelete.Enabled = false;
+            MaximizeBox = false;
         }
 
         private void btnAddRecipe_Click(object sender, EventArgs e)
@@ -49,11 +55,14 @@ namespace Assignment4
 
                 if (!arrayFull)
                 {
+                    currRecipe = new Recipe(maxNumOfIngredients);
+
                     UpdateGUI();
 
                     txtRecipe.Clear();
                     txtNameOfRecipe.Clear();
                     cboxCat.SelectedIndex = -1;
+                    errorRecipeList.SetError(btnAddRecipe, "");
                 }
                 else
                 {
@@ -80,14 +89,13 @@ namespace Assignment4
             for (int index = 0; index < amtRecipes; index++)
             {
                 Recipe recipe = recipeMngr.GetRecipeAt(index);
-                // MessageBox.Show($"i: {index} recipe: {recipe.Name}");
                 listRecipe.Items.Add(recipe.ToString());
             }
         }
 
         private bool ReadRecipeName()
         {
-            string recipeName = txtNameOfRecipe.Text;
+            string recipeName = txtNameOfRecipe.Text.Trim();
 
             bool ok = ValidateRecipeName();
 
@@ -101,7 +109,7 @@ namespace Assignment4
 
         private bool ReadRecipeCategory()
         {
-            string recipeCat = cboxCat.Text;
+            FoodCategory recipeCat = (FoodCategory)Enum.Parse(typeof(FoodCategory), cboxCat.Text);
 
             bool ok = ValidateRecipeCategory();
 
@@ -199,6 +207,8 @@ namespace Assignment4
 
                 if (ok)
                 {
+                    listRecipe.SelectedIndex = -1;
+                    errorRecipeList.SetError(btnAddRecipe, "");
                     UpdateGUI();
                 }
             }
@@ -206,19 +216,80 @@ namespace Assignment4
 
         private void btnEditBegin_Click(object sender, EventArgs e)
         {
-            int index = listRecipe.SelectedIndex;
-
-            if (index >= 0)
+            if (listRecipe.SelectedIndex != -1)
             {
-                currRecipe = recipeMngr.GetRecipeAt(index);
+                int index = listRecipe.SelectedIndex;
 
-                if (currRecipe != null)
+                btnAddRecipe.Enabled = false;
+                btnEditBegin.Enabled = false;
+                btnDelete.Enabled = false;
+                btnEditFinish.Enabled = true;
+
+                if (index >= 0)
                 {
-                    txtNameOfRecipe.Text = currRecipe.Name;
-                    txtRecipe.Text = currRecipe.Description;
-                    cboxCat.Text = currRecipe.Category;
+                    currRecipe = recipeMngr.GetRecipeAt(index);
+
+                    if (currRecipe != null)
+                    {
+                        txtNameOfRecipe.Text = currRecipe.Name;
+                        txtRecipe.Text = currRecipe.Description;
+                        cboxCat.Text = currRecipe.Category.ToString();
+                    }
                 }
             }
+        }
+
+        private void btnEditFinish_Click(object sender, EventArgs e)
+        {
+            bool ok = ReadRecipeInput();
+
+            if (ok)
+            {
+                currRecipe = new Recipe(maxNumOfIngredients);
+
+                UpdateGUI();
+
+                txtRecipe.Clear();
+                txtNameOfRecipe.Clear();
+                cboxCat.SelectedIndex = -1;
+                btnAddRecipe.Enabled = true;
+                btnEditFinish.Enabled = false;
+            }
+        }
+
+        private void btnClearSelection_Click(object sender, EventArgs e)
+        {
+            listRecipe.ClearSelected();
+            txtRecipe.Clear();
+            txtNameOfRecipe.Clear();
+            cboxCat.SelectedIndex = -1;
+            btnAddRecipe.Enabled = true;
+            btnEditFinish.Enabled = false;
+
+            currRecipe = new Recipe(maxNumOfIngredients);
+        }
+
+        private void listRecipe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listRecipe.SelectedIndex >= 0)
+            {
+                btnEditBegin.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnEditBegin.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+        }
+
+        private void listRecipe_DoubleClick(object sender, EventArgs e)
+        {
+            int recipeIndex = listRecipe.SelectedIndex;
+            Recipe clickedRecipe = recipeMngr.GetRecipeAt(recipeIndex);
+
+            // Recipe recipe = recipeMngr.recipeList;
+            MessageBox.Show(clickedRecipe.ToStringDetailed(), "Cooking Instructions");
         }
     }
 }
