@@ -8,8 +8,6 @@ namespace Assignment4
 {
     public partial class Recipe
     {
-
-        // TODO: change type from string to FoodCategory
         private FoodCategory category;
         private string name;
         private string description;
@@ -23,7 +21,8 @@ namespace Assignment4
 
         public Recipe(int maxNumOfIngredients)
         {
-            // ingredients = new Recipe[maxNumOfIngredients];
+            MaxNumOfIngredients = maxNumOfIngredients;
+            ingredients = new string[maxNumOfIngredients];
         }
 
         public Recipe(string name, FoodCategory category, string[] ingredients)
@@ -33,11 +32,81 @@ namespace Assignment4
             Ingredients = ingredients;
         }
 
-        public int CurrentNumOfIngredients()
+        public bool AddIngredient(string input)
         {
-            int value = 1;
+            int count = GetCurrentNumOfIngredients();
 
-            return value;
+            if (input != null && count < MaxNumOfIngredients)
+            {
+                ingredients[count] = input;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool ChangeIngredientAt(int index, string value)
+        {
+            bool ok = false;
+
+            if (CheckIndex(index) && (value != null))
+            {
+                ingredients[index] = value;
+            }
+
+            return ok;
+        }
+
+        public void DeleteIngredientAt(int index)
+        {
+            if (CheckIndex(index))
+            {
+                ingredients[index] = null;
+            }
+        }
+
+        public int GetCurrentNumOfIngredients()
+        {
+            int count = 0;
+
+            foreach (string currIngredient in ingredients)
+            {
+                if (currIngredient != null)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        public string GetIngredientsString()
+        {
+            string strOut = "";
+            int amtIngredients = GetCurrentNumOfIngredients();
+
+            for (int i = 0; i < amtIngredients; i++)
+            {
+                if (i != amtIngredients - 1)
+                {
+                    strOut += ingredients[i] + ", ";
+                }
+                else
+                {
+                    strOut += ingredients[i];
+                }
+            }
+
+            return strOut;
+        }
+
+        private bool CheckIndex(int index)
+        {
+            bool ok = (index >= 0) && (index < GetCurrentNumOfIngredients());
+
+            return ok;
         }
 
         public override string ToString()
@@ -46,7 +115,7 @@ namespace Assignment4
 
             if (ingredients != null)
             {
-                amtIngredients = ingredients.Length;
+                amtIngredients = GetCurrentNumOfIngredients();
             }
 
             string strOut = $"{name,-25}{category,-21}{amtIngredients}";
@@ -57,19 +126,8 @@ namespace Assignment4
         public string ToStringDetailed()
         {
             string strOut = "INGREDIENTS\n";
-            
-            for (int i = 0; i < Ingredients.Length; i++)
-            {
-                if (i != Ingredients.Length - 1)
-                {
-                    strOut += ingredients[i] + ", ";
-                }
-                else
-                {
-                    strOut += ingredients[i];
-                }
-            }
 
+            strOut += GetIngredientsString();
             strOut += "\n\n" + description;
 
             return strOut;

@@ -54,11 +54,13 @@ namespace Assignment4
             this.errorRecipeCat = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorRecipeText = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorRecipeList = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorIngredients = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpAddRecipe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeCat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredients)).BeginInit();
             this.SuspendLayout();
             // 
             // listRecipe
@@ -259,6 +261,10 @@ namespace Assignment4
             // 
             this.errorRecipeList.ContainerControl = this;
             // 
+            // errorIngredients
+            // 
+            this.errorIngredients.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,6 +291,7 @@ namespace Assignment4
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeCat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorRecipeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,6 +320,7 @@ namespace Assignment4
         private System.Windows.Forms.ErrorProvider errorRecipeCat;
         private System.Windows.Forms.ErrorProvider errorRecipeText;
         private System.Windows.Forms.ErrorProvider errorRecipeList;
+        private ErrorProvider errorIngredients;
     }
 }
 

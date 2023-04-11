@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpAddRecipe = new System.Windows.Forms.GroupBox();
             this.lblIngredientCount = new System.Windows.Forms.Label();
             this.lblIngredients = new System.Windows.Forms.Label();
@@ -40,7 +41,11 @@
             this.lblIngredient = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.errorIngredientName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorIngredientList = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpAddRecipe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredientName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredientList)).BeginInit();
             this.SuspendLayout();
             // 
             // grpAddRecipe
@@ -59,12 +64,12 @@
             this.grpAddRecipe.Size = new System.Drawing.Size(299, 297);
             this.grpAddRecipe.TabIndex = 1;
             this.grpAddRecipe.TabStop = false;
-            this.grpAddRecipe.Text = "Add ingredients";
+            this.grpAddRecipe.Text = "Ingredients list";
             // 
             // lblIngredientCount
             // 
             this.lblIngredientCount.AutoSize = true;
-            this.lblIngredientCount.Location = new System.Drawing.Point(253, 246);
+            this.lblIngredientCount.Location = new System.Drawing.Point(255, 262);
             this.lblIngredientCount.Name = "lblIngredientCount";
             this.lblIngredientCount.Size = new System.Drawing.Size(13, 13);
             this.lblIngredientCount.TabIndex = 15;
@@ -74,7 +79,7 @@
             // lblIngredients
             // 
             this.lblIngredients.AutoSize = true;
-            this.lblIngredients.Location = new System.Drawing.Point(233, 223);
+            this.lblIngredients.Location = new System.Drawing.Point(235, 240);
             this.lblIngredients.Name = "lblIngredients";
             this.lblIngredients.Size = new System.Drawing.Size(58, 13);
             this.lblIngredients.TabIndex = 14;
@@ -83,7 +88,7 @@
             // lblNoOf
             // 
             this.lblNoOf.AutoSize = true;
-            this.lblNoOf.Location = new System.Drawing.Point(243, 210);
+            this.lblNoOf.Location = new System.Drawing.Point(235, 227);
             this.lblNoOf.Name = "lblNoOf";
             this.lblNoOf.Size = new System.Drawing.Size(36, 13);
             this.lblNoOf.TabIndex = 13;
@@ -91,38 +96,44 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(233, 77);
+            this.btnDelete.Location = new System.Drawing.Point(243, 77);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(58, 23);
+            this.btnDelete.Size = new System.Drawing.Size(50, 23);
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(233, 48);
+            this.btnEdit.Location = new System.Drawing.Point(243, 48);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(58, 23);
+            this.btnEdit.Size = new System.Drawing.Size(50, 23);
             this.btnEdit.TabIndex = 11;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(233, 19);
+            this.btnAdd.Location = new System.Drawing.Point(243, 19);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(58, 23);
+            this.btnAdd.Size = new System.Drawing.Size(50, 23);
             this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // listIngredient
             // 
+            this.listIngredient.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.listIngredient.FormattingEnabled = true;
+            this.listIngredient.ItemHeight = 16;
             this.listIngredient.Location = new System.Drawing.Point(9, 47);
             this.listIngredient.Name = "listIngredient";
-            this.listIngredient.Size = new System.Drawing.Size(218, 238);
+            this.listIngredient.Size = new System.Drawing.Size(218, 228);
             this.listIngredient.TabIndex = 7;
+            this.listIngredient.SelectedIndexChanged += new System.EventHandler(this.listIngredient_SelectedIndexChanged);
             // 
             // txtNameOfIngredient
             // 
@@ -148,6 +159,7 @@
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -158,6 +170,14 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // errorIngredientName
+            // 
+            this.errorIngredientName.ContainerControl = this;
+            // 
+            // errorIngredientList
+            // 
+            this.errorIngredientList.ContainerControl = this;
             // 
             // IngredientsForm
             // 
@@ -170,8 +190,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "IngredientsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Add ingredients";
             this.grpAddRecipe.ResumeLayout(false);
             this.grpAddRecipe.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredientName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIngredientList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -190,5 +213,7 @@
         private System.Windows.Forms.Label lblIngredientCount;
         private System.Windows.Forms.Label lblIngredients;
         private System.Windows.Forms.Label lblNoOf;
+        private System.Windows.Forms.ErrorProvider errorIngredientName;
+        private System.Windows.Forms.ErrorProvider errorIngredientList;
     }
 }

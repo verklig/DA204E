@@ -14,13 +14,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Assignment4
 {
+
+    /// <summary>
+    /// This program is a recipe book that the user can interact with. It allows users to add, edit, and delete recipes.
+    /// The program has a GUI that includes text boxes and buttons for users to enter recipe information, and a list box to display
+    /// the list of recipes. It also allows users to add ingredients to a recipe.
+    /// </summary>
     public partial class MainForm : Form
     {
-        private const int maxNumOfIngredients = 50;
-        private const int maxNumOfRecipes = 200;
+        private const int maxNumOfIngredients = 50; // Maximum number of ingredients as a constant
+        private const int maxNumOfRecipes = 200; // Maximum number of recipes as a constant
 
-        private Recipe currRecipe = new Recipe(maxNumOfIngredients);
-        private RecipeManager recipeMngr = new RecipeManager(maxNumOfRecipes);
+        private Recipe currRecipe = new Recipe(maxNumOfIngredients); // Creating new object of the Recipe class and sends maxNumOfIngredients with it
+        private RecipeManager recipeMngr = new RecipeManager(maxNumOfRecipes); // Creating new object of the RecipeManager class and sends maxNumOfRecipes with it
 
         public MainForm()
         {
@@ -28,6 +34,7 @@ namespace Assignment4
             InitializeGUI();
         }
 
+        // This method initializes the GUI elements and sets various properties for the form at program start
         private void InitializeGUI()
         {
             FoodCategory addCategory = new FoodCategory();
@@ -39,12 +46,17 @@ namespace Assignment4
                 addCategory++;
             }
 
+            txtNameOfRecipe.MaxLength = 24;
             btnEditBegin.Enabled = false;
             btnEditFinish.Enabled = false;
             btnDelete.Enabled = false;
             MaximizeBox = false;
         }
 
+        // This method is for when the user clicks the add recipe button and
+        // it handles reading and validating the input, if the input is ok
+        // it also adds it as a recipe and updates the ui, it prints an error
+        // if the input was not valid
         private void btnAddRecipe_Click(object sender, EventArgs e)
         {
             bool ok = ReadRecipeInput();
@@ -57,7 +69,7 @@ namespace Assignment4
                 {
                     currRecipe = new Recipe(maxNumOfIngredients);
 
-                    UpdateGUI();
+                    UpdateListBox();
 
                     txtRecipe.Clear();
                     txtNameOfRecipe.Clear();
@@ -71,16 +83,31 @@ namespace Assignment4
             }
         }
 
+        // This method reads the user input and validates them
+        // sending a boolean that is either true or false depending on the validation
         private bool ReadRecipeInput()
         {
+            bool ingrOK;
+
+            if (currRecipe.GetCurrentNumOfIngredients() == 0)
+            {
+                errorIngredients.SetError(btnAddIngredients, "Please add ingredients");
+                ingrOK = false;
+            }
+            else
+            {
+                errorIngredients.SetError(btnAddIngredients, "");
+                ingrOK = true;
+            }
+
             bool nameOK = ReadRecipeName();
             bool catOK = ReadRecipeCategory();
             bool textOK = ReadRecipeDescription();
 
-            return nameOK && catOK && textOK;
+            return ingrOK && nameOK && catOK && textOK;
         }
 
-        private void UpdateGUI()
+        private void UpdateListBox()
         {
             listRecipe.Items.Clear();
 
@@ -109,7 +136,9 @@ namespace Assignment4
 
         private bool ReadRecipeCategory()
         {
-            FoodCategory recipeCat = (FoodCategory)Enum.Parse(typeof(FoodCategory), cboxCat.Text);
+            FoodCategory recipeCat;
+
+            Enum.TryParse(cboxCat.Text, out recipeCat);
 
             bool ok = ValidateRecipeCategory();
 
@@ -186,15 +215,8 @@ namespace Assignment4
         private void btnAddIngredients_Click(object sender, EventArgs e)
         {
             IngredientsForm dlg = new IngredientsForm(currRecipe);
+            dlg.LoadIngredients();
             DialogResult dlgResult = dlg.ShowDialog();
-
-            if (dlgResult == DialogResult.OK)
-            {
-                if (currRecipe.CurrentNumOfIngredients() <= 0)
-                {
-
-                }
-            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -209,7 +231,7 @@ namespace Assignment4
                 {
                     listRecipe.SelectedIndex = -1;
                     errorRecipeList.SetError(btnAddRecipe, "");
-                    UpdateGUI();
+                    UpdateListBox();
                 }
             }
         }
@@ -224,6 +246,7 @@ namespace Assignment4
                 btnEditBegin.Enabled = false;
                 btnDelete.Enabled = false;
                 btnEditFinish.Enabled = true;
+                listRecipe.Enabled = false;
 
                 if (index >= 0)
                 {
@@ -247,13 +270,15 @@ namespace Assignment4
             {
                 currRecipe = new Recipe(maxNumOfIngredients);
 
-                UpdateGUI();
+                UpdateListBox();
 
                 txtRecipe.Clear();
                 txtNameOfRecipe.Clear();
                 cboxCat.SelectedIndex = -1;
+
                 btnAddRecipe.Enabled = true;
                 btnEditFinish.Enabled = false;
+                listRecipe.Enabled = true;
             }
         }
 
@@ -263,8 +288,14 @@ namespace Assignment4
             txtRecipe.Clear();
             txtNameOfRecipe.Clear();
             cboxCat.SelectedIndex = -1;
+
             btnAddRecipe.Enabled = true;
             btnEditFinish.Enabled = false;
+            listRecipe.Enabled = true;
+
+            errorRecipeName.SetError(txtNameOfRecipe, "");
+            errorRecipeCat.SetError(cboxCat, "");
+            errorRecipeText.SetError(txtRecipe, "");
 
             currRecipe = new Recipe(maxNumOfIngredients);
         }
@@ -286,10 +317,12 @@ namespace Assignment4
         private void listRecipe_DoubleClick(object sender, EventArgs e)
         {
             int recipeIndex = listRecipe.SelectedIndex;
-            Recipe clickedRecipe = recipeMngr.GetRecipeAt(recipeIndex);
 
-            // Recipe recipe = recipeMngr.recipeList;
-            MessageBox.Show(clickedRecipe.ToStringDetailed(), "Cooking Instructions");
+            if (recipeIndex >= 0)
+            {
+                Recipe clickedRecipe = recipeMngr.GetRecipeAt(recipeIndex);
+                MessageBox.Show(clickedRecipe.ToStringDetailed(), "Cooking Instructions");
+            }
         }
     }
 }
