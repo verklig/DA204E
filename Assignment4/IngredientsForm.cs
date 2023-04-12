@@ -13,12 +13,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Assignment4
 {
+    /// <summary>
+    /// This form is used to display a gui for the user to add ingredients to later be saved in an array.
+    /// </summary>
     public partial class IngredientsForm : Form
     {
-        private Recipe recipe;
+        private Recipe recipe; // Recipe object to be used as recipe
 
-        public Recipe Recipe { get { return recipe; } set { recipe = value; } }
-
+        // The constructor of the class
         public IngredientsForm(Recipe recipe)
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Assignment4
             InitializeGUI();
         }
 
+        // This method initializes the gui elements and sets different properties for the form at start
         private void InitializeGUI()
         {
             txtNameOfIngredient.MaxLength = 24;
@@ -37,10 +40,13 @@ namespace Assignment4
             ControlBox = false;
         }
 
+        // This method saves the ingredients when the "Ok" button is pressed
         private void SaveIngredients()
         {
             int amtIngredients = listIngredient.Items.Count;
-            Array.Clear(recipe.Ingredients, 0, recipe.Ingredients.Length); // Clear array for the delete to update ingredients
+
+            // Clear array for the delete button to update ingredients
+            Array.Clear(recipe.Ingredients, 0, recipe.Ingredients.Length);
 
             for (int index = 0; index < amtIngredients; index++)
             {
@@ -48,6 +54,7 @@ namespace Assignment4
             }
         }
 
+        // This method loads the ingredients to the "IngredientsForm" when the "Add Ingredients" button is pressed
         public void LoadIngredients()
         {
             int amtIngredients = recipe.GetCurrentNumOfIngredients();
@@ -60,17 +67,25 @@ namespace Assignment4
             lblIngredientCount.Text = listIngredient.Items.Count.ToString();
         }
 
+        // This method is for when the user clicks the "Ok" button
+        // It saves the ingredients and closes the form
         private void btnOK_Click(object sender, EventArgs e)
         {
             SaveIngredients();
             Close();
         }
 
+        // This method is for when the user clicks the "Cancel" button
+        // It closes the form without saving anything
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        // This method is for when the user clicks the "Add" button
+        // It reads the input and adds the ingredient to the list
+        // if the input is not empty and the list is not full, and throws
+        // various errors if it is
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int.TryParse(lblIngredientCount.Text, out int count);
@@ -107,6 +122,9 @@ namespace Assignment4
             }
         }
 
+        // This method is for when the user clicks the "Edit" button
+        // It removes an item at the chosen index and adds it back with
+        // the new values if the input is not empty
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int index = listIngredient.SelectedIndex;
@@ -122,8 +140,15 @@ namespace Assignment4
             {
                 errorIngredientName.SetError(txtNameOfIngredient, "Please add a name for the ingredient");
             }
+
+            if (listIngredient.Items.Count > 0)
+            {
+                btnOK.Enabled = true;
+            }
         }
 
+        // This method is for when the user clicks the "Delete" button
+        // It removes an item at the chosen index
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = listIngredient.SelectedIndex;
@@ -133,9 +158,10 @@ namespace Assignment4
             {
                 listIngredient.Items.RemoveAt(index);
 
-                listIngredient.SelectedIndex = -1;
                 count--;
                 lblIngredientCount.Text = count.ToString();
+
+                listIngredient.SelectedIndex = -1;
                 errorIngredientName.SetError(txtNameOfIngredient, "");
                 errorIngredientList.SetError(txtNameOfIngredient, "");
                 txtNameOfIngredient.Clear();
@@ -151,6 +177,11 @@ namespace Assignment4
             }
         }
 
+        // This method gets called every time the user clicks different items in the list
+        // It checks if the user has an item selected, if so the "Edit" and "Delete" buttons
+        // become clickable, otherwise they become not clickable
+        // It also sets the input text box to mirror the ingredient name
+        // so that the user can either add the same ingredient again, or edit it
         private void listIngredient_SelectedIndexChanged(object sender, EventArgs e)
         {
             string itemStr = listIngredient.GetItemText(listIngredient.SelectedItem);

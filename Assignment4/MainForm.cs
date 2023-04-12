@@ -25,16 +25,17 @@ namespace Assignment4
         private const int maxNumOfIngredients = 50; // Maximum number of ingredients as a constant
         private const int maxNumOfRecipes = 200; // Maximum number of recipes as a constant
 
-        private Recipe currRecipe = new Recipe(maxNumOfIngredients); // Creating new object of the Recipe class and sends maxNumOfIngredients with it
-        private RecipeManager recipeMngr = new RecipeManager(maxNumOfRecipes); // Creating new object of the RecipeManager class and sends maxNumOfRecipes with it
+        private Recipe currRecipe = new Recipe(maxNumOfIngredients); // Creating new object of the Recipe class and sends maxNumOfIngredients as an argument
+        private RecipeManager recipeMngr = new RecipeManager(maxNumOfRecipes); // Creating new object of the RecipeManager class and sends maxNumOfRecipes as an argument
 
+        // The constructor of the class
         public MainForm()
         {
             InitializeComponent();
             InitializeGUI();
         }
 
-        // This method initializes the GUI elements and sets various properties for the form at program start
+        // This method initializes the gui elements and sets different properties for the form at program start
         private void InitializeGUI()
         {
             FoodCategory addCategory = new FoodCategory();
@@ -53,42 +54,14 @@ namespace Assignment4
             MaximizeBox = false;
         }
 
-        // This method is for when the user clicks the add recipe button and
-        // it handles reading and validating the input, if the input is ok
-        // it also adds it as a recipe and updates the ui, it prints an error
-        // if the input was not valid
-        private void btnAddRecipe_Click(object sender, EventArgs e)
-        {
-            bool ok = ReadRecipeInput();
-
-            if (ok)
-            {
-                bool arrayFull = !recipeMngr.Add(currRecipe);
-
-                if (!arrayFull)
-                {
-                    currRecipe = new Recipe(maxNumOfIngredients);
-
-                    UpdateListBox();
-
-                    txtRecipe.Clear();
-                    txtNameOfRecipe.Clear();
-                    cboxCat.SelectedIndex = -1;
-                    errorRecipeList.SetError(btnAddRecipe, "");
-                }
-                else
-                {
-                    errorRecipeList.SetError(btnAddRecipe, "List is full");
-                }
-            }
-        }
-
         // This method reads the user input and validates them
-        // sending a boolean that is either true or false depending on the validation
+        // and also sends a boolean that is either true or false depening on the validation
         private bool ReadRecipeInput()
         {
             bool ingrOK;
 
+            // This if statemaent checks so that the number of ingredients
+            // is above 0 before accepting the input
             if (currRecipe.GetCurrentNumOfIngredients() == 0)
             {
                 errorIngredients.SetError(btnAddIngredients, "Please add ingredients");
@@ -107,6 +80,7 @@ namespace Assignment4
             return ingrOK && nameOK && catOK && textOK;
         }
 
+        // This method updates the items in the list box
         private void UpdateListBox()
         {
             listRecipe.Items.Clear();
@@ -120,6 +94,8 @@ namespace Assignment4
             }
         }
 
+        // This method reads the name and validates it
+        // and also sends a boolean that is either true or false depening on the validation
         private bool ReadRecipeName()
         {
             string recipeName = txtNameOfRecipe.Text.Trim();
@@ -134,6 +110,8 @@ namespace Assignment4
             return ok;
         }
 
+        // This method reads the category and validates it
+        // and also sends a boolean that is either true or false depening on the validation
         private bool ReadRecipeCategory()
         {
             FoodCategory recipeCat;
@@ -150,6 +128,8 @@ namespace Assignment4
             return ok;
         }
 
+        // This method reads the description and validates it
+        // and also sends a boolean that is either true or false depening on the validation
         private bool ReadRecipeDescription()
         {
             string recipeDesc = txtRecipe.Text;
@@ -163,7 +143,8 @@ namespace Assignment4
 
             return ok;
         }
-
+        
+        #region Validators
         private bool ValidateRecipeName()
         {
             bool ok = true;
@@ -211,7 +192,41 @@ namespace Assignment4
 
             return ok;
         }
+        #endregion
 
+        // This method is for when the user clicks the "Add Recipe" button and
+        // it handles reading and validating the input, if the input is ok
+        // it also adds it as a recipe and updates the ui, it prints an error
+        // if the input was not valid
+        private void btnAddRecipe_Click(object sender, EventArgs e)
+        {
+            bool ok = ReadRecipeInput();
+
+            if (ok)
+            {
+                bool arrayFull = !recipeMngr.Add(currRecipe);
+
+                if (!arrayFull)
+                {
+                    currRecipe = new Recipe(maxNumOfIngredients);
+
+                    UpdateListBox();
+
+                    txtRecipe.Clear();
+                    txtNameOfRecipe.Clear();
+                    cboxCat.SelectedIndex = -1;
+                    errorRecipeList.SetError(btnAddRecipe, "");
+                }
+                else
+                {
+                    errorRecipeList.SetError(btnAddRecipe, "List is full");
+                }
+            }
+        }
+
+        // This method is for when the user clicks the "Add Ingredients" button
+        // It opens a new instance of the "IngredientsForm" for the user
+        // to add new ingredients to be saved
         private void btnAddIngredients_Click(object sender, EventArgs e)
         {
             IngredientsForm dlg = new IngredientsForm(currRecipe);
@@ -219,6 +234,8 @@ namespace Assignment4
             DialogResult dlgResult = dlg.ShowDialog();
         }
 
+        // This method is for when the user clicks the "Delete" button
+        // It deletes the currently selected recipe and clears the selected item
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = listRecipe.SelectedIndex;
@@ -236,6 +253,9 @@ namespace Assignment4
             }
         }
 
+        // This method is for when the user clicks the "Edit-Begin" button
+        // It gives back all the information stored in the recipe to the various input methods
+        // so that the user can edit the recipe after one has been made
         private void btnEditBegin_Click(object sender, EventArgs e)
         {
             if (listRecipe.SelectedIndex != -1)
@@ -247,6 +267,7 @@ namespace Assignment4
                 btnDelete.Enabled = false;
                 btnEditFinish.Enabled = true;
                 listRecipe.Enabled = false;
+                btnClearSelection.Enabled = false;
 
                 if (index >= 0)
                 {
@@ -262,6 +283,9 @@ namespace Assignment4
             }
         }
 
+        // This method is for when the user clicks the "Edit-Finish" button
+        // It essentially does the same thing as the "Add Recipe" button
+        // does, but instead of adding a new recipe, it edits the selected item instead.
         private void btnEditFinish_Click(object sender, EventArgs e)
         {
             bool ok = ReadRecipeInput();
@@ -279,9 +303,13 @@ namespace Assignment4
                 btnAddRecipe.Enabled = true;
                 btnEditFinish.Enabled = false;
                 listRecipe.Enabled = true;
+                btnClearSelection.Enabled = true;
             }
         }
 
+        // This method is for when the user clicks the "Clear Selection" button
+        // It clears any inputs made from the user, any errors that was visable before
+        // and also clears the selection of an item if the user had one selected
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
             listRecipe.ClearSelected();
@@ -296,10 +324,14 @@ namespace Assignment4
             errorRecipeName.SetError(txtNameOfRecipe, "");
             errorRecipeCat.SetError(cboxCat, "");
             errorRecipeText.SetError(txtRecipe, "");
+            errorIngredients.SetError(btnAddIngredients, "");
 
             currRecipe = new Recipe(maxNumOfIngredients);
         }
 
+        // This method gets called every time the user clicks different items in the list
+        // It checks if the user has an item selected, if so the "Edit-Begin" and "Delete" buttons
+        // become clickable, otherwise they become not clickable
         private void listRecipe_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listRecipe.SelectedIndex >= 0)
@@ -314,6 +346,9 @@ namespace Assignment4
             }
         }
 
+        // This method gets called every time the user double-clicks and item in the list
+        // If the user has an item selected, it shows a message box containing the ingredients
+        // and cooking instructions for the recipe
         private void listRecipe_DoubleClick(object sender, EventArgs e)
         {
             int recipeIndex = listRecipe.SelectedIndex;

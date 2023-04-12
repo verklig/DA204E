@@ -269,6 +269,7 @@ namespace Assignment4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(794, 353);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEditFinish);
