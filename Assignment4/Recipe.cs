@@ -23,10 +23,13 @@ namespace Assignment4
         public string[] Ingredients { get { return ingredients; } set { ingredients = value; } }
         public int MaxNumOfIngredients { get; }
 
-        // This is the constructor of the class, it takes an integer
-        // as an argument that is "maxNumOfIngredients" and initializes
-        // the "MaxNumOfIngredients" property with this value, it also creates
-        // a new "ingredients" string array with a length equal to the value of "maxNumOfIngredients"
+        /// <summary>
+        /// This is the constructor of the class, it takes an integer
+        /// as an argument that is "maxNumOfIngredients" and initializes
+        /// the "MaxNumOfIngredients" property with this value, it also creates
+        /// a new "ingredients" string array with a length equal to the value of "maxNumOfIngredients".
+        /// </summary>
+        /// <param name="maxNumOfIngredients"></param>
         public Recipe(int maxNumOfIngredients)
         {
             MaxNumOfIngredients = maxNumOfIngredients;
@@ -84,8 +87,11 @@ namespace Assignment4
         //}
         #endregion
 
-        // This method returns the current number of non-null ingredients in the "ingredients" array
-        // and it iterates through the array and counts the number of elements that are not null
+        /// <summary>
+        /// This method returns the current number of non-null ingredients in the "ingredients" array
+        /// and it iterates through the array and counts the number of elements that are not null.
+        /// </summary>
+        /// <returns>current number of ingredients</returns>
         public int GetCurrentNumOfIngredients()
         {
             int count = 0;
@@ -101,9 +107,12 @@ namespace Assignment4
             return count;
         }
 
-        // This method returns a string containing a comma-separated list of all the non-null ingredients in the "ingredients" array 
-        // it uses a loop to concatenate the ingredients into a string with commas between them, this is used to print the ingredients
-        // as a string in a nice looking order
+        /// <summary>
+        /// This method returns a string containing a comma-separated list of all the non-null ingredients in the "ingredients" array.
+        /// It uses a loop to concatenate the ingredients into a string with commas between them, this is used to print the ingredients
+        /// as a string in a nice looking order.
+        /// </summary>
+        /// <returns>string with ingredients</returns>
         public string GetIngredientsString()
         {
             string strOut = "";
@@ -124,8 +133,11 @@ namespace Assignment4
             return strOut;
         }
 
-        // This method overrides the "ToString()" method to return a formatted string
-        // that displays the name, category and number of ingredients for the recipe
+        /// <summary>
+        /// This method overrides the "ToString()" method to return a formatted string
+        /// that displays the name, category and number of ingredients for the recipe.
+        /// </summary>
+        /// <returns>string with name, category and number of ingredients</returns>
         public override string ToString()
         {
             int amtIngredients = 0;
@@ -140,9 +152,12 @@ namespace Assignment4
             return strOut;
         }
 
-        // This method returns a string containing the name, category, ingredients, and description of the recipe
-        // it calls the "GetIngredientsString()" method and concatenates the resulting string with the "description" string
-        // separated by two newline characters
+        /// <summary>
+        /// This method returns a string containing the name, category, ingredients, and description of the recipe.
+        /// It calls the "GetIngredientsString()" method and concatenates the resulting string with the "description" string
+        /// separated by two newline characters.
+        /// </summary>
+        /// <returns>detailed string of the whole recipe</returns>
         public string ToStringDetailed()
         {
             string strOut = "INGREDIENTS\n";
