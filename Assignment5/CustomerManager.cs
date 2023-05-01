@@ -40,10 +40,10 @@ namespace Assignment5
             return null;
         }
 
-        public Customer GetCustomer(int index)
-        {
-            return null;
-        }
+        //public Customer GetCustomer(int index)
+        //{
+        //    return null;
+        //}
 
         public string[] GetCustomerInfoStrings(int index)
         {

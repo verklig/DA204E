@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Assignment5
 {
-    internal class Phone
+    public class Phone
     {
+        private string cellPhone;
+        private string homePhone;
+
+        public string CellPhone { get { return cellPhone; } set { cellPhone = value; } }
+        public string HomePhone { get { return homePhone; } set { homePhone = value; } }
     }
 }

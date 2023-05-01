@@ -28,34 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpName = new System.Windows.Forms.GroupBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.grpEmailAndPhone = new System.Windows.Forms.GroupBox();
+            this.lblEmailPrivate = new System.Windows.Forms.Label();
+            this.lblEmailBusiness = new System.Windows.Forms.Label();
+            this.lblCellPhone = new System.Windows.Forms.Label();
             this.txtEmailPrivate = new System.Windows.Forms.TextBox();
             this.txtEmailBusiness = new System.Windows.Forms.TextBox();
             this.txtCellPhone = new System.Windows.Forms.TextBox();
             this.lblHomePhone = new System.Windows.Forms.Label();
             this.txtHomePhone = new System.Windows.Forms.TextBox();
             this.grpAdress = new System.Windows.Forms.GroupBox();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblZipcode = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.lblStreet = new System.Windows.Forms.Label();
+            this.cmbCountry = new System.Windows.Forms.ComboBox();
             this.txtZipcode = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtStreet = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cmbCountry = new System.Windows.Forms.ComboBox();
-            this.lblCellPhone = new System.Windows.Forms.Label();
-            this.lblEmailBusiness = new System.Windows.Forms.Label();
-            this.lblEmailPrivate = new System.Windows.Forms.Label();
-            this.lblStreet = new System.Windows.Forms.Label();
-            this.lblCity = new System.Windows.Forms.Label();
-            this.lblZipcode = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
+            this.errorFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorHomePhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCellPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEmailBusiness = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEmailPrivate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorStreet = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCity = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorZipcode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCountry = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpName.SuspendLayout();
             this.grpEmailAndPhone.SuspendLayout();
             this.grpAdress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorHomePhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCellPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmailBusiness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmailPrivate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorStreet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorZipcode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCountry)).BeginInit();
             this.SuspendLayout();
             // 
             // grpName
@@ -66,7 +87,7 @@
             this.grpName.Controls.Add(this.lblFirstName);
             this.grpName.Location = new System.Drawing.Point(13, 23);
             this.grpName.Name = "grpName";
-            this.grpName.Size = new System.Drawing.Size(397, 97);
+            this.grpName.Size = new System.Drawing.Size(392, 97);
             this.grpName.TabIndex = 0;
             this.grpName.TabStop = false;
             this.grpName.Text = "Name";
@@ -115,10 +136,37 @@
             this.grpEmailAndPhone.Controls.Add(this.txtHomePhone);
             this.grpEmailAndPhone.Location = new System.Drawing.Point(13, 126);
             this.grpEmailAndPhone.Name = "grpEmailAndPhone";
-            this.grpEmailAndPhone.Size = new System.Drawing.Size(397, 149);
+            this.grpEmailAndPhone.Size = new System.Drawing.Size(392, 149);
             this.grpEmailAndPhone.TabIndex = 1;
             this.grpEmailAndPhone.TabStop = false;
             this.grpEmailAndPhone.Text = "Email and phone";
+            // 
+            // lblEmailPrivate
+            // 
+            this.lblEmailPrivate.AutoSize = true;
+            this.lblEmailPrivate.Location = new System.Drawing.Point(22, 109);
+            this.lblEmailPrivate.Name = "lblEmailPrivate";
+            this.lblEmailPrivate.Size = new System.Drawing.Size(70, 13);
+            this.lblEmailPrivate.TabIndex = 10;
+            this.lblEmailPrivate.Text = "Email, private";
+            // 
+            // lblEmailBusiness
+            // 
+            this.lblEmailBusiness.AutoSize = true;
+            this.lblEmailBusiness.Location = new System.Drawing.Point(13, 83);
+            this.lblEmailBusiness.Name = "lblEmailBusiness";
+            this.lblEmailBusiness.Size = new System.Drawing.Size(79, 13);
+            this.lblEmailBusiness.TabIndex = 9;
+            this.lblEmailBusiness.Text = "Email, business";
+            // 
+            // lblCellPhone
+            // 
+            this.lblCellPhone.AutoSize = true;
+            this.lblCellPhone.Location = new System.Drawing.Point(35, 57);
+            this.lblCellPhone.Name = "lblCellPhone";
+            this.lblCellPhone.Size = new System.Drawing.Size(57, 13);
+            this.lblCellPhone.TabIndex = 8;
+            this.lblCellPhone.Text = "Cell phone";
             // 
             // txtEmailPrivate
             // 
@@ -169,10 +217,55 @@
             this.grpAdress.Controls.Add(this.txtStreet);
             this.grpAdress.Location = new System.Drawing.Point(13, 281);
             this.grpAdress.Name = "grpAdress";
-            this.grpAdress.Size = new System.Drawing.Size(397, 151);
+            this.grpAdress.Size = new System.Drawing.Size(392, 151);
             this.grpAdress.TabIndex = 2;
             this.grpAdress.TabStop = false;
             this.grpAdress.Text = "Adress";
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Location = new System.Drawing.Point(49, 110);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(43, 13);
+            this.lblCountry.TabIndex = 14;
+            this.lblCountry.Text = "Country";
+            // 
+            // lblZipcode
+            // 
+            this.lblZipcode.AutoSize = true;
+            this.lblZipcode.Location = new System.Drawing.Point(43, 83);
+            this.lblZipcode.Name = "lblZipcode";
+            this.lblZipcode.Size = new System.Drawing.Size(49, 13);
+            this.lblZipcode.TabIndex = 13;
+            this.lblZipcode.Text = "Zip code";
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Location = new System.Drawing.Point(68, 57);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(24, 13);
+            this.lblCity.TabIndex = 12;
+            this.lblCity.Text = "City";
+            // 
+            // lblStreet
+            // 
+            this.lblStreet.AutoSize = true;
+            this.lblStreet.Location = new System.Drawing.Point(57, 31);
+            this.lblStreet.Name = "lblStreet";
+            this.lblStreet.Size = new System.Drawing.Size(35, 13);
+            this.lblStreet.TabIndex = 11;
+            this.lblStreet.Text = "Street";
+            // 
+            // cmbCountry
+            // 
+            this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCountry.FormattingEnabled = true;
+            this.cmbCountry.Location = new System.Drawing.Point(98, 107);
+            this.cmbCountry.Name = "cmbCountry";
+            this.cmbCountry.Size = new System.Drawing.Size(276, 21);
+            this.cmbCountry.TabIndex = 11;
             // 
             // txtZipcode
             // 
@@ -215,83 +308,51 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // cmbCountry
+            // errorFirstName
             // 
-            this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCountry.FormattingEnabled = true;
-            this.cmbCountry.Location = new System.Drawing.Point(98, 107);
-            this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(276, 21);
-            this.cmbCountry.TabIndex = 11;
+            this.errorFirstName.ContainerControl = this;
             // 
-            // lblCellPhone
+            // errorLastName
             // 
-            this.lblCellPhone.AutoSize = true;
-            this.lblCellPhone.Location = new System.Drawing.Point(35, 57);
-            this.lblCellPhone.Name = "lblCellPhone";
-            this.lblCellPhone.Size = new System.Drawing.Size(57, 13);
-            this.lblCellPhone.TabIndex = 8;
-            this.lblCellPhone.Text = "Cell phone";
+            this.errorLastName.ContainerControl = this;
             // 
-            // lblEmailBusiness
+            // errorHomePhone
             // 
-            this.lblEmailBusiness.AutoSize = true;
-            this.lblEmailBusiness.Location = new System.Drawing.Point(13, 83);
-            this.lblEmailBusiness.Name = "lblEmailBusiness";
-            this.lblEmailBusiness.Size = new System.Drawing.Size(79, 13);
-            this.lblEmailBusiness.TabIndex = 9;
-            this.lblEmailBusiness.Text = "Email, business";
+            this.errorHomePhone.ContainerControl = this;
             // 
-            // lblEmailPrivate
+            // errorCellPhone
             // 
-            this.lblEmailPrivate.AutoSize = true;
-            this.lblEmailPrivate.Location = new System.Drawing.Point(22, 109);
-            this.lblEmailPrivate.Name = "lblEmailPrivate";
-            this.lblEmailPrivate.Size = new System.Drawing.Size(70, 13);
-            this.lblEmailPrivate.TabIndex = 10;
-            this.lblEmailPrivate.Text = "Email, private";
+            this.errorCellPhone.ContainerControl = this;
             // 
-            // lblStreet
+            // errorEmailBusiness
             // 
-            this.lblStreet.AutoSize = true;
-            this.lblStreet.Location = new System.Drawing.Point(57, 31);
-            this.lblStreet.Name = "lblStreet";
-            this.lblStreet.Size = new System.Drawing.Size(35, 13);
-            this.lblStreet.TabIndex = 11;
-            this.lblStreet.Text = "Street";
+            this.errorEmailBusiness.ContainerControl = this;
             // 
-            // lblCity
+            // errorEmailPrivate
             // 
-            this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(68, 57);
-            this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(24, 13);
-            this.lblCity.TabIndex = 12;
-            this.lblCity.Text = "City";
+            this.errorEmailPrivate.ContainerControl = this;
             // 
-            // lblZipcode
+            // errorStreet
             // 
-            this.lblZipcode.AutoSize = true;
-            this.lblZipcode.Location = new System.Drawing.Point(43, 83);
-            this.lblZipcode.Name = "lblZipcode";
-            this.lblZipcode.Size = new System.Drawing.Size(49, 13);
-            this.lblZipcode.TabIndex = 13;
-            this.lblZipcode.Text = "Zip code";
+            this.errorStreet.ContainerControl = this;
             // 
-            // lblCountry
+            // errorCity
             // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(49, 110);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(43, 13);
-            this.lblCountry.TabIndex = 14;
-            this.lblCountry.Text = "Country";
+            this.errorCity.ContainerControl = this;
+            // 
+            // errorZipcode
+            // 
+            this.errorZipcode.ContainerControl = this;
+            // 
+            // errorCountry
+            // 
+            this.errorCountry.ContainerControl = this;
             // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 478);
+            this.ClientSize = new System.Drawing.Size(418, 478);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.grpAdress);
@@ -299,13 +360,24 @@
             this.Controls.Add(this.grpName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ContactForm";
-            this.Text = "ContactForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "null";
             this.grpName.ResumeLayout(false);
             this.grpName.PerformLayout();
             this.grpEmailAndPhone.ResumeLayout(false);
             this.grpEmailAndPhone.PerformLayout();
             this.grpAdress.ResumeLayout(false);
             this.grpAdress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorHomePhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCellPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmailBusiness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmailPrivate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorStreet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorZipcode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCountry)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +409,15 @@
         private System.Windows.Forms.Label lblZipcode;
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.Label lblStreet;
+        private System.Windows.Forms.ErrorProvider errorFirstName;
+        private System.Windows.Forms.ErrorProvider errorLastName;
+        private System.Windows.Forms.ErrorProvider errorHomePhone;
+        private System.Windows.Forms.ErrorProvider errorCellPhone;
+        private System.Windows.Forms.ErrorProvider errorEmailBusiness;
+        private System.Windows.Forms.ErrorProvider errorEmailPrivate;
+        private System.Windows.Forms.ErrorProvider errorStreet;
+        private System.Windows.Forms.ErrorProvider errorCity;
+        private System.Windows.Forms.ErrorProvider errorZipcode;
+        private System.Windows.Forms.ErrorProvider errorCountry;
     }
 }

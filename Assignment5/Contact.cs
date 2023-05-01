@@ -14,11 +14,11 @@ namespace Assignment5
         private string firstName;
         private string lastName;
 
-        public Email EmailData { get; set; }
-        public Phone PhoneData { get; set; }
-        public Address AddressData { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public Email EmailData { get { return email; } set { email = value; } }
+        public Phone PhoneData { get { return phone; } set { phone = value; } }
+        public Address AddressData { get { return address; } set { address = value; } }
+        public string FirstName { get { return firstName; } set { firstName = value; } }
+        public string LastName { get { return lastName; } set { lastName = value; } }
 
         public Contact()
         {

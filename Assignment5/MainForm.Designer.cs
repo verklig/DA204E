@@ -161,7 +161,8 @@
             this.Controls.Add(this.lstCustomer);
             this.Controls.Add(this.lblID);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Customer Registry By Eric Blohm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,3 +10,15 @@ D:\Program\Microsoft Visual Studio\Repos\Assignment5\obj\Debug\Assignment5.cspro
 D:\Program\Microsoft Visual Studio\Repos\Assignment5\obj\Debug\Assignment5.csproj.CoreCompileInputs.cache
 D:\Program\Microsoft Visual Studio\Repos\Assignment5\obj\Debug\Assignment5.exe
 D:\Program\Microsoft Visual Studio\Repos\Assignment5\obj\Debug\Assignment5.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\bin\Debug\Assignment5.exe.config
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\bin\Debug\Assignment5.exe
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\bin\Debug\Assignment5.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.csproj.SuggestedBindingRedirects.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.ContactForm.resources
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.MainForm.resources
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.Properties.Resources.resources
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.csproj.GenerateResource.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.exe
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.pdb

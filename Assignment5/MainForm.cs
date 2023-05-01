@@ -27,12 +27,18 @@ namespace Assignment5
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            ContactForm dlg = new ContactForm();
+            // dlg.LoadIngredients();
+            DialogResult dlgResult = dlg.ShowDialog();
+            dlg.Text = "Add New Customer";
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            ContactForm dlg = new ContactForm();
+            // dlg.LoadIngredients();
+            DialogResult dlgResult = dlg.ShowDialog();
+            dlg.Text = "Edit Customer";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
