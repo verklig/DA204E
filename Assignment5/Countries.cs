@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 
-	/// <summary>
-	///The countries of the world.
-	/// </summary>
-	public enum Countries
+/// <summary>
+///The countries of the world.
+/// </summary>
+public enum Countries
 	{
         Afghanistan,
         Algeria,
@@ -54,7 +55,7 @@ using System.Text;
         Côte_d_Ivoire,
         Croatia,
         Cuba,
-        Cyprus, 
+        Cyprus,
         Czech_Republic,
         Denmark,
         Djibouti,
@@ -133,7 +134,7 @@ using System.Text;
         Namibia,
         Nauru,
         Nepal, 
-        Netherlands, 
+        Netherlands,
         New_Zealand,
         Nicaragua,
         Niger, 
@@ -153,7 +154,7 @@ using System.Text;
         Romania,
         Russia,
         Rwanda,
-        Saint_Kitts_and_Nevis, 
+        Saint_Kitts_and_Nevis,
         Saint_Lucia,
         Saint_Vincent_and_The_Grenadines,
         Samoa,
@@ -166,7 +167,7 @@ using System.Text;
         Sierra_Leone,
         Singapore,
         Slovakia, 
-        Slovenia, 
+        Slovenia,
         Solomon_Islands,
         Somalia,
         South_Africa,
@@ -175,7 +176,7 @@ using System.Text;
         Sudan, 
         Suriname,
         Swaziland,
-        Sverige,
+        Sweden,
         Switzerland,
         Syria,
         Taiwan, 
@@ -183,7 +184,7 @@ using System.Text;
         Tanzania,
         Thailand,
         Togo,
-        Tonga, 
+        Tonga,
         Trinidad_and_Tobago,
         Tunisia, 
         Turkey, 
@@ -199,7 +200,7 @@ using System.Text;
         Vanuatu,
         Vatican_City,
         Venezuela,
-        Vietnam, 
+        Vietnam,
         Western_Sahara, 
         Yemen,
         Zambia,

@@ -20,7 +20,7 @@ public class Email
     /// Default constructor - calls another constructor in this class
     /// </summary>
     /// <remarks></remarks>
-    public Email()
+    public Email() : this(string.Empty)
     {
     }
 
@@ -36,11 +36,12 @@ public class Email
     /// <summary>
     /// Copy constructor returning copy
     /// </summary>
-    public Email(Email theOther)
-    {
-        this.personalMail = theOther.personalMail;
-        this.officeMail = theOther.officeMail;
-    }
+    //public Email(Email theOther)
+    //{
+    //    this.personalMail = theOther.personalMail;
+    //    this.officeMail = theOther.officeMail;
+    //}
+
     /// <summary>
     /// Constructor with two parameters. This is  constructor that has most
     /// number of parameters. It is in tis constructor that all coding 
@@ -94,10 +95,10 @@ public class Email
     /// <returns>A formatted string as heading for the values formatted in the ToString
     /// method below.</returns>
     /// <remarks></remarks>
-    public string GetToStringItemsHeadings
-    {
-        get { return string.Format("{0,-20} {1, -20}", "Office EmailData", "Private EmailData"); }
-    }
+    //public string GetToStringItemsHeadings
+    //{
+    //    get { return string.Format("{0,-20} {1, -20}", "Office EmailData", "Private EmailData"); }
+    //}
 
     /// <summary>
     /// Delivers a formatted string with data stored in the object. The values will
@@ -108,14 +109,13 @@ public class Email
     /// <remarks></remarks>
     public override string ToString()
     {
-        string strOut = "\n" + "Emails" + "\n";
+        string strOut = "\r\n\r\n" + "Emails" + "\r\n";
 
-        strOut += string.Format(" {0,-10} {1, -10}\n", "Private", personalMail);
-        strOut += string.Format(" {0,-10} {1, -10}\n\n", "Office", officeMail);
+        strOut += string.Format(" {0,-10} {1, -10}\r\n", "Private", personalMail);
+        strOut += string.Format(" {0,-10} {1, -10}\r\n", "Office", officeMail);
 
         return strOut;
     }
-
 }
 
 

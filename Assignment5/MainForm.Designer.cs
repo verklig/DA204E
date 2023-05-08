@@ -45,7 +45,7 @@
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblID.Location = new System.Drawing.Point(9, 14);
+            this.lblID.Location = new System.Drawing.Point(14, 14);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(20, 16);
             this.lblID.TabIndex = 0;
@@ -53,10 +53,12 @@
             // 
             // lstCustomer
             // 
+            this.lstCustomer.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCustomer.FormattingEnabled = true;
+            this.lstCustomer.ItemHeight = 14;
             this.lstCustomer.Location = new System.Drawing.Point(12, 43);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(703, 355);
+            this.lstCustomer.Size = new System.Drawing.Size(703, 354);
             this.lstCustomer.TabIndex = 1;
             this.lstCustomer.SelectedIndexChanged += new System.EventHandler(this.lstCustomer_SelectedIndexChanged);
             // 
@@ -65,7 +67,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblName.Location = new System.Drawing.Point(129, 14);
+            this.lblName.Location = new System.Drawing.Point(132, 14);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(44, 16);
             this.lblName.TabIndex = 2;
@@ -76,7 +78,7 @@
             this.lblOfficePhone.AutoSize = true;
             this.lblOfficePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOfficePhone.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOfficePhone.Location = new System.Drawing.Point(351, 14);
+            this.lblOfficePhone.Location = new System.Drawing.Point(348, 14);
             this.lblOfficePhone.Name = "lblOfficePhone";
             this.lblOfficePhone.Size = new System.Drawing.Size(83, 16);
             this.lblOfficePhone.TabIndex = 3;
@@ -87,7 +89,7 @@
             this.lblOfficeEmail.AutoSize = true;
             this.lblOfficeEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOfficeEmail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOfficeEmail.Location = new System.Drawing.Point(561, 14);
+            this.lblOfficeEmail.Location = new System.Drawing.Point(523, 14);
             this.lblOfficeEmail.Name = "lblOfficeEmail";
             this.lblOfficeEmail.Size = new System.Drawing.Size(78, 16);
             this.lblOfficeEmail.TabIndex = 4;
@@ -96,11 +98,12 @@
             // txtContactDetails
             // 
             this.txtContactDetails.BackColor = System.Drawing.SystemColors.Control;
-            this.txtContactDetails.Enabled = false;
+            this.txtContactDetails.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactDetails.ForeColor = System.Drawing.Color.RoyalBlue;
             this.txtContactDetails.Location = new System.Drawing.Point(722, 43);
             this.txtContactDetails.Multiline = true;
             this.txtContactDetails.Name = "txtContactDetails";
+            this.txtContactDetails.ReadOnly = true;
             this.txtContactDetails.Size = new System.Drawing.Size(268, 355);
             this.txtContactDetails.TabIndex = 5;
             // 
@@ -160,6 +163,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lstCustomer);
             this.Controls.Add(this.lblID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Registry By Eric Blohm";

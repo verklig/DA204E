@@ -22,3 +22,4 @@ D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignm
 D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.csproj.CoreCompileInputs.cache
 D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.exe
 D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment5\obj\Debug\Assignment5.CustomMessageForm.resources

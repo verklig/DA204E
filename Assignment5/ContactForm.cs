@@ -10,37 +10,91 @@ using System.Windows.Forms;
 
 namespace Assignment5
 {
+    /// <summary>
+    /// This form is used to display a GUI for the user to add contact information that gets added in the list.
+    /// </summary>
     public partial class ContactForm : Form
     {
-        private Contact contact;
-        private bool closeForm = false;
+        private Contact contact; // Setting the Contact class to be used as contact
 
-        // Does this work?
+        // Getter and setter
         internal Contact ContactData { get { return contact; } set { contact = value; } }
 
-        public ContactForm()
+        /// <summary>
+        /// The default constructor of the class with the title of the form as the parameter.
+        /// </summary>
+        /// <param name="title"></param>
+        public ContactForm(string title)
         {
             InitializeComponent();
             InitializeGUI();
+
+            Text = title;
         }
 
-        public ContactForm(string title)
+        /// <summary>
+        /// Constructor with the title and contact as parameters.
+        /// The contact is passed so that it can be printed back to the ui for editing.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="contact"></param>
+        internal ContactForm(string title, Contact contact)
         {
+            InitializeComponent();
+            InitializeGUI();
 
+            Text = title;
+
+            txtFirstName.Text = contact.FirstName;
+            txtLastName.Text = contact.LastName;
+
+            txtHomePhone.Text = contact.PhoneData.HomePhone;
+            txtCellPhone.Text = contact.PhoneData.CellPhone;
+            txtEmailBusiness.Text = contact.EmailData.Work;
+            txtEmailPrivate.Text = contact.EmailData.Personal;
+
+            txtStreet.Text = contact.AddressData.Street;
+            txtCity.Text = contact.AddressData.City;
+            txtZipcode.Text = contact.AddressData.Zipcode;
+            cmbCountry.Text = contact.AddressData.Country.ToString().Replace("_", " ");
         }
 
+        /// <summary>
+        /// This method initializes the gui elements and sets different properties for the form at program start.
+        /// </summary>
         private void InitializeGUI()
         {
             foreach (Countries country in Enum.GetValues(typeof(Countries)))
             {
-                cmbCountry.Items.Add(country.ToString());
+                cmbCountry.Items.Add(country.ToString().Replace("_", " "));
             }
 
             ControlBox = false;
+
+            txtFirstName.MaxLength = 12;
+            txtLastName.MaxLength = 12;
+
+            txtHomePhone.MaxLength = 24;
+            txtCellPhone.MaxLength = 24;
+            txtEmailBusiness.MaxLength = 24;
+            txtEmailPrivate.MaxLength = 24;
+
+            txtStreet.MaxLength = 24;
+            txtCity.MaxLength = 24;
+            txtZipcode.MaxLength = 24;
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "OK" button.
+        /// It reads the input and sends an ok if the input is ok,
+        /// otherwise nothing is done.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
+            contact = new Contact();
+
             bool namesOK = ReadNames();
             bool emailsOK = ReadEmails();
             bool phonesOK = ReadPhones();
@@ -48,28 +102,37 @@ namespace Assignment5
 
             if (namesOK && emailsOK && phonesOK && addressesOK)
             {
+                DialogResult = DialogResult.OK;
                 Close();
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Cancel" button.
+        /// It shows another form asking the user if they are sure they wan to cancel,
+        /// if yes both forms close, otherwise only the form asking closes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            CustomMessageForm dlg = new CustomMessageForm();
+            DialogResult dlgResult = dlg.ShowDialog();
+
+            if (dlgResult == DialogResult.Yes)
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            }
         }
 
-        private void ContactForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Close();
-        }
-
-        private void UpdateGUI()
-        {
-
-        }
-
+        /// <summary>
+        /// This method reads the names and validates them
+        /// and also sends a boolean that is either true or false depening on the validation.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ReadNames()
         {
-            Contact contact = new Contact();
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
 
@@ -84,58 +147,71 @@ namespace Assignment5
             return ok;
         }
 
+        /// <summary>
+        /// This method reads the emails and validates them
+        /// and also sends a boolean that is either true or false depening on the validation.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ReadEmails()
         {
-            Email email = new Email();
             string emailBusiness = txtEmailBusiness.Text.Trim();
             string emailPrivate = txtEmailPrivate.Text.Trim();
 
-            bool ok = ValidateEmails();
+            bool ok = true; // = ValidateEmails();
 
             if (ok)
             {
-                email.Work = emailBusiness;
-                email.Personal = emailPrivate;
+                contact.EmailData = new Email();
+                contact.EmailData.Work = emailBusiness;
+                contact.EmailData.Personal = emailPrivate;
             }
 
             return ok;
         }
 
+        /// <summary>
+        /// This method reads the phone numbers and validates them
+        /// and also sends a boolean that is either true or false depening on the validation.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ReadPhones()
         {
-            Phone phone = new Phone();
             string cellPhone = txtCellPhone.Text.Trim();
             string homePhone = txtHomePhone.Text.Trim();
 
-            bool ok = ValidatePhones();
+            bool ok = true; // ValidatePhones();
 
             if (ok)
             {
-                phone.CellPhone = cellPhone;
-                phone.HomePhone = homePhone;
+                contact.PhoneData = new Phone();
+                contact.PhoneData.CellPhone = cellPhone;
+                contact.PhoneData.HomePhone = homePhone;
             }
 
             return ok;
         }
 
+        /// <summary>
+        /// This method reads the addresses and validates them
+        /// and also sends a boolean that is either true or false depening on the validation.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ReadAddresses()
         {
-            Address address = new Address();
             string street = txtStreet.Text.Trim();
             string city = txtCity.Text.Trim();
             string zipcode = txtZipcode.Text.Trim();
 
             Countries country;
-            Enum.TryParse(cmbCountry.Text, out country);
+            Enum.TryParse(cmbCountry.Text.Replace(" ", "_"), out country);
 
             bool ok = ValidateAddresses();
 
             if (ok)
             {
-                address.Street = street;
-                address.City = city;
-                address.Zipcode = zipcode;
-                address.Country = country;
+                contact.AddressData = new Address(city, country);
+                contact.AddressData.Street = street;
+                contact.AddressData.Zipcode = zipcode;
             }
 
             return ok;
@@ -144,30 +220,19 @@ namespace Assignment5
         #region Validators
         private bool ValidateNames()
         {
-            bool firstNameOK = true;
-            bool lastNameOK = true;
+            bool NameOK = true;
 
-            if (txtFirstName.Text == "")
+            if (String.IsNullOrWhiteSpace(txtFirstName.Text) && String.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                errorFirstName.SetError(txtFirstName, "Please add a first name");
-                firstNameOK = false;
+                errorName.SetError(txtNameError, "Please add a first name or last name");
+                NameOK = false;
             }
             else
             {
-                errorFirstName.SetError(txtFirstName, "");
+                errorName.SetError(txtNameError, "");
             }
 
-            if (txtLastName.Text == "")
-            {
-                errorLastName.SetError(txtLastName, "Please add a last name");
-                firstNameOK = false;
-            }
-            else
-            {
-                errorLastName.SetError(txtLastName, "");
-            }
-
-            return firstNameOK && lastNameOK;
+            return NameOK;
         }
 
         private bool ValidateEmails()
@@ -175,7 +240,7 @@ namespace Assignment5
             bool emailBusinessOK = true;
             bool emailPrivateOK = true;
 
-            if (txtEmailBusiness.Text == "")
+            if (txtEmailBusiness.Text != null)
             {
                 errorEmailBusiness.SetError(txtEmailBusiness, "Please add a business email");
                 emailBusinessOK = false;
@@ -233,17 +298,17 @@ namespace Assignment5
             bool zipcodeOK = true;
             bool countryOK = true;
 
-            if (txtStreet.Text == "")
-            {
-                errorStreet.SetError(txtStreet, "Please add a street");
-                streetOK = false;
-            }
-            else
-            {
-                errorStreet.SetError(txtStreet, "");
-            }
+            //if (txtStreet.Text == "")
+            //{
+            //    errorStreet.SetError(txtStreet, "Please add a street");
+            //    streetOK = false;
+            //}
+            //else
+            //{
+            //    errorStreet.SetError(txtStreet, "");
+            //}
 
-            if (txtCity.Text == "")
+            if (String.IsNullOrWhiteSpace(txtCity.Text))
             {
                 errorCity.SetError(txtCity, "Please add a city");
                 cityOK = false;
@@ -253,15 +318,15 @@ namespace Assignment5
                 errorCity.SetError(txtCity, "");
             }
 
-            if (txtZipcode.Text == "")
-            {
-                errorZipcode.SetError(txtZipcode, "Please add a zipcode");
-                zipcodeOK = false;
-            }
-            else
-            {
-                errorZipcode.SetError(txtZipcode, "");
-            }
+            //if (txtZipcode.Text == "")
+            //{
+            //    errorZipcode.SetError(txtZipcode, "Please add a zipcode");
+            //    zipcodeOK = false;
+            //}
+            //else
+            //{
+            //    errorZipcode.SetError(txtZipcode, "");
+            //}
 
             if (cmbCountry.Text == "")
             {
@@ -275,6 +340,30 @@ namespace Assignment5
 
             return streetOK && cityOK && zipcodeOK && countryOK;
         }
+        #endregion
+
+        #region Unused commented out code
+        //private bool MessageBoxConfirmation()
+        //{
+        //    string message = "Are you sure you want to cancel?";
+        //    string title = "Cancel";
+
+        //    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+        //    DialogResult result = MessageBox.Show(message, title, buttons);
+
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //private void UpdateGUI()
+        //{
+        //}
         #endregion
     }
 }
