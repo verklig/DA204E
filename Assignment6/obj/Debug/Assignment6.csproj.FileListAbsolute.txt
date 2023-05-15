@@ -1,0 +1,22 @@
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\bin\Debug\Assignment6.exe.config
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\bin\Debug\Assignment6.exe
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\bin\Debug\Assignment6.pdb
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.csproj.SuggestedBindingRedirects.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.MainForm.resources
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.Properties.Resources.resources
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.csproj.GenerateResource.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.exe
+D:\Program\Microsoft Visual Studio\Repos\Assignment6\obj\Debug\Assignment6.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\bin\Debug\Assignment6.exe.config
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\bin\Debug\Assignment6.exe
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\bin\Debug\Assignment6.pdb
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.csproj.AssemblyReference.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.csproj.SuggestedBindingRedirects.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.MainForm.resources
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.Properties.Resources.resources
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.csproj.GenerateResource.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.csproj.CoreCompileInputs.cache
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.exe
+D:\Program\Microsoft Visual Studio\Repos\C# DA204E\Assignment6\obj\Debug\Assignment6.pdb
