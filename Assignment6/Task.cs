@@ -12,7 +12,7 @@ namespace Assignment6
         private string description;
         private PriorityType priority;
 
-        public DateTime DateAndTime { get { return date; } set { date = value; } }
+        // public DateTime DateAndTime { get { return date; } set { date = value; } } 
         public DateTime TaskDate { get { return date; } set { date = value; } }
         public PriorityType Priority { get { return priority; } set { priority = value; } }
         public string Description { get { return description; } set { description = value; } }
@@ -35,17 +35,25 @@ namespace Assignment6
 
         public string GetPriorityString()
         {
-            return null;
+            string priority = Enum.GetName(typeof(PriorityType), this.priority);
+            priority = priority.Replace("_", " ");
+
+            return priority;
         }
 
         private string GetTimeString()
         {
-            return null;
+            string time = string.Format("{0}:{1}", date.Hour.ToString("00"), date.Minute.ToString("00"));
+
+            return time;
         }
 
         public override string ToString()
         {
-            return null;
+            string txtOut = $"{date.ToLongDateString(),-25} {GetTimeString(),-12} {" ",5}" +
+                            $"{GetPriorityString(),-19} {description}";
+
+            return txtOut;
         }
     }
 }

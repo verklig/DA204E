@@ -33,7 +33,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.lblDate = new System.Windows.Forms.Label();
+            this.lblDateAndTime = new System.Windows.Forms.Label();
             this.lblPriority = new System.Windows.Forms.Label();
             this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.lblTask = new System.Windows.Forms.Label();
@@ -47,28 +47,35 @@
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblHour = new System.Windows.Forms.Label();
+            this.lblPriority2 = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblEditing = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorTask)).BeginInit();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstTask
             // 
+            this.lstTask.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstTask.FormattingEnabled = true;
-            this.lstTask.Location = new System.Drawing.Point(12, 119);
+            this.lstTask.ItemHeight = 14;
+            this.lstTask.Location = new System.Drawing.Point(12, 149);
             this.lstTask.Name = "lstTask";
-            this.lstTask.Size = new System.Drawing.Size(859, 212);
+            this.lstTask.Size = new System.Drawing.Size(859, 200);
             this.lstTask.TabIndex = 0;
             this.lstTask.SelectedIndexChanged += new System.EventHandler(this.lstTask_SelectedIndexChanged);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 337);
+            this.btnEdit.Location = new System.Drawing.Point(12, 367);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(138, 23);
             this.btnEdit.TabIndex = 1;
@@ -78,7 +85,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(156, 337);
+            this.btnDelete.Location = new System.Drawing.Point(156, 367);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(138, 23);
             this.btnDelete.TabIndex = 2;
@@ -88,19 +95,21 @@
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker.Location = new System.Drawing.Point(88, 35);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(188, 20);
             this.dateTimePicker.TabIndex = 3;
+            this.dateTimePicker.Value = new System.DateTime(2023, 5, 17, 0, 0, 0, 0);
             // 
-            // lblDate
+            // lblDateAndTime
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(9, 37);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(73, 13);
-            this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "Date and time";
+            this.lblDateAndTime.AutoSize = true;
+            this.lblDateAndTime.Location = new System.Drawing.Point(9, 37);
+            this.lblDateAndTime.Name = "lblDateAndTime";
+            this.lblDateAndTime.Size = new System.Drawing.Size(73, 13);
+            this.lblDateAndTime.TabIndex = 4;
+            this.lblDateAndTime.Text = "Date and time";
             // 
             // lblPriority
             // 
@@ -182,14 +191,40 @@
             // menuFileNew
             // 
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new System.Drawing.Size(180, 22);
+            this.menuFileNew.Size = new System.Drawing.Size(176, 22);
             this.menuFileNew.Text = "New              Ctrl+N";
             this.menuFileNew.Click += new System.EventHandler(this.menuFileNew_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
+            // 
+            // menuFileOpen
+            // 
+            this.menuFileOpen.Name = "menuFileOpen";
+            this.menuFileOpen.Size = new System.Drawing.Size(176, 22);
+            this.menuFileOpen.Text = "Open data file";
+            this.menuFileOpen.Click += new System.EventHandler(this.menuFileOpen_Click);
+            // 
+            // menuFileSave
+            // 
+            this.menuFileSave.Name = "menuFileSave";
+            this.menuFileSave.Size = new System.Drawing.Size(176, 22);
+            this.menuFileSave.Text = "Save data file";
+            this.menuFileSave.Click += new System.EventHandler(this.menuFileSave_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(173, 6);
+            // 
+            // menuFileExit
+            // 
+            this.menuFileExit.Name = "menuFileExit";
+            this.menuFileExit.Size = new System.Drawing.Size(176, 22);
+            this.menuFileExit.Text = "Exit                Alt+F4";
+            this.menuFileExit.Click += new System.EventHandler(this.menuFileExit_Click);
             // 
             // menuHelp
             // 
@@ -202,47 +237,72 @@
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuHelpAbout.Size = new System.Drawing.Size(116, 22);
             this.menuHelpAbout.Text = "About...";
             this.menuHelpAbout.Click += new System.EventHandler(this.menuHelpAbout_Click);
             // 
-            // menuFileOpen
+            // lblDate
             // 
-            this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(180, 22);
-            this.menuFileOpen.Text = "Open data file";
-            this.menuFileOpen.Click += new System.EventHandler(this.menuFileOpen_Click);
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(12, 133);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(30, 13);
+            this.lblDate.TabIndex = 11;
+            this.lblDate.Text = "Date";
             // 
-            // menuFileSave
+            // lblHour
             // 
-            this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new System.Drawing.Size(180, 22);
-            this.menuFileSave.Text = "Save data file";
-            this.menuFileSave.Click += new System.EventHandler(this.menuFileSave_Click);
+            this.lblHour.AutoSize = true;
+            this.lblHour.Location = new System.Drawing.Point(196, 133);
+            this.lblHour.Name = "lblHour";
+            this.lblHour.Size = new System.Drawing.Size(30, 13);
+            this.lblHour.TabIndex = 12;
+            this.lblHour.Text = "Hour";
             // 
-            // toolStripSeparator2
+            // lblPriority2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.lblPriority2.AutoSize = true;
+            this.lblPriority2.Location = new System.Drawing.Point(321, 133);
+            this.lblPriority2.Name = "lblPriority2";
+            this.lblPriority2.Size = new System.Drawing.Size(38, 13);
+            this.lblPriority2.TabIndex = 13;
+            this.lblPriority2.Text = "Priority";
             // 
-            // menuFileExit
+            // lblDescription
             // 
-            this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.Size = new System.Drawing.Size(180, 22);
-            this.menuFileExit.Text = "Exit                Alt+F4";
-            this.menuFileExit.Click += new System.EventHandler(this.menuFileExit_Click);
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(461, 133);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(60, 13);
+            this.lblDescription.TabIndex = 14;
+            this.lblDescription.Text = "Description";
+            // 
+            // lblEditing
+            // 
+            this.lblEditing.AutoSize = true;
+            this.lblEditing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblEditing.Location = new System.Drawing.Point(232, 91);
+            this.lblEditing.Name = "lblEditing";
+            this.lblEditing.Size = new System.Drawing.Size(48, 13);
+            this.lblEditing.TabIndex = 15;
+            this.lblEditing.Text = "Editing...";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 369);
+            this.ClientSize = new System.Drawing.Size(883, 398);
+            this.Controls.Add(this.lblEditing);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblPriority2);
+            this.Controls.Add(this.lblHour);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtTask);
             this.Controls.Add(this.lblTask);
             this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.lblPriority);
-            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblDateAndTime);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -266,7 +326,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblDateAndTime;
         private System.Windows.Forms.Label lblPriority;
         private System.Windows.Forms.ComboBox cmbPriority;
         private System.Windows.Forms.Label lblTask;
@@ -286,6 +346,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuFileSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuFileExit;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label lblPriority2;
+        private System.Windows.Forms.Label lblHour;
+        private System.Windows.Forms.Label lblEditing;
     }
 }
 
