@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lstTask = new System.Windows.Forms.ListBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -40,9 +41,9 @@
             this.txtTask = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.errorTask = new System.Windows.Forms.ErrorProvider(this.components);
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,8 @@
             this.lblPriority2 = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblEditing = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorTask)).BeginInit();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +78,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 367);
+            this.btnEdit.Location = new System.Drawing.Point(12, 355);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(138, 23);
             this.btnEdit.TabIndex = 1;
@@ -85,7 +88,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(156, 367);
+            this.btnDelete.Location = new System.Drawing.Point(156, 355);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(138, 23);
             this.btnDelete.TabIndex = 2;
@@ -159,9 +162,9 @@
             // 
             this.errorTask.ContainerControl = this;
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog.FileName = "openFileDialog1";
             // 
             // mainMenu
             // 
@@ -237,8 +240,8 @@
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(116, 22);
-            this.menuHelpAbout.Text = "About...";
+            this.menuHelpAbout.Size = new System.Drawing.Size(180, 22);
+            this.menuHelpAbout.Text = "About . . .";
             this.menuHelpAbout.Click += new System.EventHandler(this.menuHelpAbout_Click);
             // 
             // lblDate
@@ -287,11 +290,22 @@
             this.lblEditing.TabIndex = 15;
             this.lblEditing.Text = "Editing...";
             // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(816, 358);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(55, 16);
+            this.lblTimer.TabIndex = 16;
+            this.lblTimer.Text = "00:00:00";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 398);
+            this.ClientSize = new System.Drawing.Size(883, 385);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.lblEditing);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblPriority2);
@@ -309,6 +323,8 @@
             this.Controls.Add(this.lstTask);
             this.Controls.Add(this.mainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "TODO Reminder by Eric Blohm";
@@ -333,14 +349,14 @@
         private System.Windows.Forms.TextBox txtTask;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ErrorProvider errorTask;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem menuFile;
         private System.Windows.Forms.ToolStripMenuItem menuFileNew;
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private System.Windows.Forms.ToolStripMenuItem menuHelpAbout;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuFileOpen;
         private System.Windows.Forms.ToolStripMenuItem menuFileSave;
@@ -351,6 +367,8 @@
         private System.Windows.Forms.Label lblPriority2;
         private System.Windows.Forms.Label lblHour;
         private System.Windows.Forms.Label lblEditing;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

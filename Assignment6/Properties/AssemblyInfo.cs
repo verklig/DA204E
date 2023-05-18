@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Assignment6")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("The TODO Reminder")]
+[assembly: AssemblyDescription("This is a program that aims to make your life easier by keeping a list of tasks you have to do in easy managable way. You can add, edit or delete your tasks and also save and load them if you want to seperate tasks.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Assignment6")]
+[assembly: AssemblyCompany("g'LO AB")]
+[assembly: AssemblyProduct("TODO Reminder")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

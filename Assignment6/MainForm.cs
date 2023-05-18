@@ -11,7 +11,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Assignment6
 {
@@ -41,6 +43,7 @@ namespace Assignment6
             MaximizeBox = false;
             txtTask.MaxLength = 56;
 
+            toolTip.SetToolTip(dateTimePicker, "Click to open calendar to edit the date, or write directly here.");
             dateTimePicker.CustomFormat = "yyyy-MM-dd    HH:mm";
 
             foreach (PriorityType priority in Enum.GetValues(typeof(PriorityType)))
@@ -48,7 +51,8 @@ namespace Assignment6
                 cmbPriority.Items.Add(priority.ToString().Replace("_", " "));
             }
 
-            SetDefaultValues();
+            ResetDefaultValues();
+            StartTimer();
         }
 
         private void UpdateTaskList()
@@ -74,14 +78,29 @@ namespace Assignment6
             btnDelete.Enabled = setting;
         }
 
-        private void SetDefaultValues()
+        private void ResetDefaultValues()
         {
             dateTimePicker.Value = DateTime.Now;
             cmbPriority.SelectedIndex = 2;
             lstTask.Enabled = true;
             menuFile.Enabled = true;
+            menuHelp.Enabled = true;
             btnAdd.Text = "Add";
             txtTask.Clear();
+        }
+
+        private void StartTimer()
+        {
+            timer = new Timer();
+
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = 1000;
+            timer.Enabled = true;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            lblTimer.Text = DateTime.Now.ToLongTimeString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -100,7 +119,7 @@ namespace Assignment6
                     isEditing = false;
 
                     UpdateTaskList();
-                    SetDefaultValues();
+                    ResetDefaultValues();
                 }
             }
             else
@@ -111,7 +130,7 @@ namespace Assignment6
                     lstTask.SelectedIndex = -1;
 
                     UpdateTaskList();
-                    SetDefaultValues();
+                    ResetDefaultValues();
                 }
             }
         }
@@ -133,6 +152,7 @@ namespace Assignment6
                         EnableButtons(false);
                         lstTask.Enabled = false;
                         menuFile.Enabled = false;
+                        menuHelp.Enabled = false;
                         lblEditing.Visible = true;
                         btnAdd.Text = "Finish";
 
@@ -168,6 +188,15 @@ namespace Assignment6
             }
         }
 
+        // Not done
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                InitializeGUI();
+            }
+        }
+
         private void menuFileNew_Click(object sender, EventArgs e)
         {
             InitializeGUI();
@@ -196,22 +225,23 @@ namespace Assignment6
 
         private void menuHelpAbout_Click(object sender, EventArgs e)
         {
-
+            AboutBox dlg = new AboutBox();
+            dlg.ShowDialog();
         }
 
         private void MainForm_Closing(object sender, CancelEventArgs e)
         {
-            CustomMessageForm dlg = new CustomMessageForm();
-            DialogResult dlgResult = dlg.ShowDialog();
+            //CustomMessageForm dlg = new CustomMessageForm();
+            //DialogResult dlgResult = dlg.ShowDialog();
 
-            if (dlgResult == DialogResult.Yes)
-            {
-                Close();
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+            //if (dlgResult == DialogResult.Yes)
+            //{
+            //    Close();
+            //}
+            //else
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
         private bool ReadInput()
@@ -234,7 +264,7 @@ namespace Assignment6
         {
             bool taskOK = true;
 
-            if (txtTask.Text == "")
+            if (String.IsNullOrWhiteSpace(txtTask.Text))
             {
                 errorTask.SetError(txtTask, "Please add a task description");
                 taskOK = false;
