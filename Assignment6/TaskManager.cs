@@ -57,22 +57,22 @@ namespace Assignment6
             return ok;
         }
 
-        public bool AddTask(DateTime date, string description, PriorityType priority)
-        {
-            Task task = new Task(date, description, priority);
-            bool ok = true;
+        //public bool AddTask(DateTime date, string description, PriorityType priority)
+        //{
+        //    Task task = new Task(date, description, priority);
+        //    bool ok = true;
 
-            if (task != null)
-            {
-                taskList.Add(task);
-            }
-            else
-            {
-                ok = false;
-            }
+        //    if (task != null)
+        //    {
+        //        taskList.Add(task);
+        //    }
+        //    else
+        //    {
+        //        ok = false;
+        //    }
 
-            return ok;
-        }
+        //    return ok;
+        //}
 
         public bool EditTask(Task task, int index)
         {
@@ -107,30 +107,30 @@ namespace Assignment6
             return ok;
         }
 
-        public string[] GetInfoStringList()
+        //public string[] GetInfoStringList()
+        //{
+        //    string[] infoStrings = new string[taskList.Count];
+
+        //    for (int i = 0; i < infoStrings.Length; i++)
+        //    {
+        //        infoStrings[i] = taskList[i].ToString();
+        //    }
+
+        //    return infoStrings;
+        //}
+
+        public bool WriteDataToFile(string fileName)
         {
-            string[] infoStrings = new string[taskList.Count];
+            FileManager fileMngr = new FileManager();
 
-            for (int i = 0; i < infoStrings.Length; i++)
-            {
-                infoStrings[i] = taskList[i].ToString();
-            }
-
-            return infoStrings;
+            return fileMngr.SaveTaskListToFile(taskList, fileName);
         }
 
-        //public bool WriteDataToFile(string fileName)
-        //{ 
-        //    FileManager fileMngr = new FileManager();
+        public bool ReadDataFromFile(string fileName)
+        {
+            FileManager fileMngr = new FileManager();
 
-        //    return fileMngr.SaveTaskListToFile(taskList, fileName);
-        //}
-
-        //public bool ReadDataFromFile(string fileName)
-        //{
-        //    FileManager fileMngr = new FileManager();
-
-        //    return fileMngr.ReadTaskListFromFile(taskList, fileName);
-        //}
+            return fileMngr.ReadTaskListFromFile(taskList, fileName);
+        }
     }
 }

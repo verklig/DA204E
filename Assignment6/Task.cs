@@ -22,9 +22,9 @@ namespace Assignment6
             priority = PriorityType.Normal;
         }
 
-        public Task(DateTime taskDate) : this(taskDate, string.Empty, PriorityType.Normal)
-        {
-        }
+        //public Task(DateTime taskDate) : this(taskDate, string.Empty, PriorityType.Normal)
+        //{
+        //}
 
         public Task(DateTime taskDate, string description, PriorityType priority)
         {
@@ -50,7 +50,7 @@ namespace Assignment6
 
         public override string ToString()
         {
-            string txtOut = $"{date.ToLongDateString(),-25} {GetTimeString(),-12} {" ",5}" +
+            string txtOut = $"{date.ToShortDateString(),-25} {GetTimeString(),-12} {" ",5}" +
                             $"{GetPriorityString(),-19} {description}";
 
             return txtOut;

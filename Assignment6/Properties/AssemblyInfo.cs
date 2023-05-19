@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("The TODO Reminder")]
-[assembly: AssemblyDescription("This is a program that aims to make your life easier by keeping a list of tasks you have to do in easy managable way. You can add, edit or delete your tasks and also save and load them if you want to seperate tasks.")]
+[assembly: AssemblyDescription("This is a program that aims to make your life easier by keeping a list of tasks you have to do in easy managable way. You can add, edit or delete your tasks and also save and load them.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("g'LO AB")]
 [assembly: AssemblyProduct("TODO Reminder")]

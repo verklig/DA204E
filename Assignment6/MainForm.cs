@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Assignment6
     {
         private TaskManager taskMngr;
         private Task task;
-        private string fileName;
+        private string fileName = Application.StartupPath + "\\Tasks.txt";
         private bool isEditing = false;
 
         public MainForm()
@@ -170,9 +171,16 @@ namespace Assignment6
 
             if (index >= 0)
             {
-                taskMngr.DeleteTask(index);
-                lstTask.SelectedIndex = -1;
-                UpdateTaskList();
+                CustomMessageForm dlg = new CustomMessageForm("Delete task", "Are you sure you want to delete the task?" +
+                                                                  Environment.NewLine + "This choice cannot be reversed!");
+                DialogResult dlgResult = dlg.ShowDialog();
+
+                if (dlgResult == DialogResult.Yes)
+                {
+                    taskMngr.DeleteTask(index);
+                    lstTask.SelectedIndex = -1;
+                    UpdateTaskList();
+                }
             }
         }
 
@@ -188,39 +196,62 @@ namespace Assignment6
             }
         }
 
-        // Not done
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.N)
             {
-                InitializeGUI();
+                menuFileNew_Click(sender, e);
             }
         }
 
         private void menuFileNew_Click(object sender, EventArgs e)
         {
-            InitializeGUI();
-        }
-
-        private void menuFileOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuFileSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuFileExit_Click(object sender, EventArgs e)
-        {
-            CustomMessageForm dlg = new CustomMessageForm();
+            CustomMessageForm dlg = new CustomMessageForm("New file", "Are you sure you want a new file?" +
+                                                    Environment.NewLine + "Unsaved progress will be lost!");
             DialogResult dlgResult = dlg.ShowDialog();
 
             if (dlgResult == DialogResult.Yes)
             {
-                Close();
+                InitializeGUI();
             }
+        }
+
+        private void menuFileOpen_Click(object sender, EventArgs e)
+        {
+            bool ok = taskMngr.ReadDataFromFile(fileName);
+
+            if (!ok)
+            {
+                CustomMessageForm dlg = new CustomMessageForm("Error", "Could not open data file!" +
+                                            Environment.NewLine + "Unknown reason...", false, "OK");
+                DialogResult dlgResult = dlg.ShowDialog();
+            }
+            else
+            {
+                UpdateTaskList();
+            }
+        }
+
+        private void menuFileSave_Click(object sender, EventArgs e)
+        {
+            bool ok = taskMngr.WriteDataToFile(fileName);
+
+            if (!ok)
+            {
+                CustomMessageForm dlg = new CustomMessageForm("Error", "Could not save data file!" +
+                                            Environment.NewLine + "Unknown reason...", false, "OK");
+                DialogResult dlgResult = dlg.ShowDialog();
+            }
+            else
+            {
+                CustomMessageForm dlg = new CustomMessageForm("File saved!", "Data file saved to:" + Environment.NewLine + fileName, false, "OK");
+                DialogResult dlgResult = dlg.ShowDialog();
+            }
+        }
+
+        private void menuFileExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void menuHelpAbout_Click(object sender, EventArgs e)
@@ -229,19 +260,16 @@ namespace Assignment6
             dlg.ShowDialog();
         }
 
-        private void MainForm_Closing(object sender, CancelEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //CustomMessageForm dlg = new CustomMessageForm();
-            //DialogResult dlgResult = dlg.ShowDialog();
+            CustomMessageForm dlg = new CustomMessageForm("Exit program", "Are you sure you want to exit?" +
+                                                     Environment.NewLine + "Unsaved progress will be lost!");
+            DialogResult dlgResult = dlg.ShowDialog();
 
-            //if (dlgResult == DialogResult.Yes)
-            //{
-            //    Close();
-            //}
-            //else
-            //{
-            //    e.Cancel = true;
-            //}
+            if (dlgResult != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
 
         private bool ReadInput()
