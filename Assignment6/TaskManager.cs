@@ -6,17 +6,29 @@ using System.Threading.Tasks;
 
 namespace Assignment6
 {
+    /// <summary>
+    /// This class is the manager for the tasks, it adds or changes the tasks if the values are valid.
+    /// </summary>
     internal class TaskManager
     {
-        List<Task> taskList = new List<Task>();
+        List<Task> taskList = new List<Task>(); // List of tasks
 
+        // Getter for task count
         public int TaskCount { get { return taskList.Count; } }
 
+        /// <summary>
+        /// The constructor of the class creating a new list.
+        /// </summary>
         public TaskManager() 
         {
             taskList = new List<Task>();
         }
 
+        /// <summary>
+        /// This method gets the task at the chosen index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>the chosen task</returns>
         public Task GetTask(int index)
         {
             if (CheckIndex(index))
@@ -41,6 +53,11 @@ namespace Assignment6
             return ok;
         }
 
+        /// <summary>
+        /// This method adds a task to the task list if the input is ok.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns>true or false</returns>
         public bool AddTask(Task task)
         {
             bool ok = true;
@@ -57,23 +74,12 @@ namespace Assignment6
             return ok;
         }
 
-        //public bool AddTask(DateTime date, string description, PriorityType priority)
-        //{
-        //    Task task = new Task(date, description, priority);
-        //    bool ok = true;
-
-        //    if (task != null)
-        //    {
-        //        taskList.Add(task);
-        //    }
-        //    else
-        //    {
-        //        ok = false;
-        //    }
-
-        //    return ok;
-        //}
-
+        /// <summary>
+        /// This method edits the chosen task.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="index"></param>
+        /// <returns>true or false</returns>
         public bool EditTask(Task task, int index)
         {
             bool ok = true;
@@ -90,6 +96,11 @@ namespace Assignment6
             return ok;
         }
 
+        /// <summary>
+        /// This method deletes the chosen task.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>true or false</returns>
         public bool DeleteTask(int index)
         {
             bool ok = false;
@@ -107,18 +118,11 @@ namespace Assignment6
             return ok;
         }
 
-        //public string[] GetInfoStringList()
-        //{
-        //    string[] infoStrings = new string[taskList.Count];
-
-        //    for (int i = 0; i < infoStrings.Length; i++)
-        //    {
-        //        infoStrings[i] = taskList[i].ToString();
-        //    }
-
-        //    return infoStrings;
-        //}
-
+        /// <summary>
+        /// This method writes data to the file to be saved if the validation is ok.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>true or false</returns>
         public bool WriteDataToFile(string fileName)
         {
             FileManager fileMngr = new FileManager();
@@ -126,6 +130,11 @@ namespace Assignment6
             return fileMngr.SaveTaskListToFile(taskList, fileName);
         }
 
+        /// <summary>
+        /// This method reads data from the file to be opened if the validation is ok.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>true or false</returns>
         public bool ReadDataFromFile(string fileName)
         {
             FileManager fileMngr = new FileManager();

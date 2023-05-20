@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Assignment6
 {
+    /// <summary>
+    /// This form is an about box to show details about the application.
+    /// </summary>
     partial class AboutBox : Form
     {
         public AboutBox()

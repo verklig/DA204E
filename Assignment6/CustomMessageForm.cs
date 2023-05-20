@@ -61,7 +61,7 @@ namespace Assignment5
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(228, 70);
             this.lblDescription.TabIndex = 0;
-            this.lblDescription.Text = "lblDescription";
+            this.lblDescription.Text = "Description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnYes

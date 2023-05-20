@@ -18,19 +18,29 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Assignment6
 {
+    /// <summary>
+    /// This program is a TODO reminder that the user can use to store different tasks. It allows users to add, edit, and delete tasks and also save and load them.
+    /// The program has a GUI that includes a listbox to show a list of tasks, a main menu to choose different options and the various input boxes.
+    /// </summary>
     public partial class MainForm : Form
     {
-        private TaskManager taskMngr;
-        private Task task;
-        private string fileName = Application.StartupPath + "\\Tasks.txt";
-        private bool isEditing = false;
+        private TaskManager taskMngr; // Setting the TaskManager class to be used as taskMngr
+        private Task task; // Setting the Task class to be used as task
+        private string fileName = Application.StartupPath + "\\Tasks.txt"; // Setting file location to Tasks.txt in the same location as the application
+        private bool isEditing = false; // Boolean to check if the user is editing or not to keep track of the add button and other things for editing
 
+        /// <summary>
+        /// The default constructor of the class.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
             InitializeGUI();
         }
 
+        /// <summary>
+        /// This method initializes the gui elements and sets different properties for the form at program start.
+        /// </summary>
         private void InitializeGUI()
         {
             // Creating a new object of the TaskManager class every time this method runs so that it acts as a new file
@@ -56,6 +66,9 @@ namespace Assignment6
             StartTimer();
         }
 
+        /// <summary>
+        /// This method updates the items in the list box.
+        /// </summary>
         private void UpdateTaskList()
         {
             lstTask.Items.Clear();
@@ -79,6 +92,9 @@ namespace Assignment6
             btnDelete.Enabled = setting;
         }
 
+        /// <summary>
+        /// This method resets most of the components on the gui to the standard values.
+        /// </summary>
         private void ResetDefaultValues()
         {
             dateTimePicker.Value = DateTime.Now;
@@ -90,6 +106,9 @@ namespace Assignment6
             txtTask.Clear();
         }
 
+        /// <summary>
+        /// This method starts the clock to be displayed on the form.
+        /// </summary>
         private void StartTimer()
         {
             timer = new Timer();
@@ -99,11 +118,25 @@ namespace Assignment6
             timer.Enabled = true;
         }
 
+        /// <summary>
+        /// This method is tied to the method above to start the timer object, it
+        /// sets todays time on to a label.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToLongTimeString();
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Add" or "Finish" button,
+        /// it handles reading and validating the input, if the input is ok
+        /// it also adds it in the list and updates the ui, it prints an error
+        /// if the input was not valid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             task = new Task();
@@ -136,6 +169,13 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Edit" button.
+        /// It gives back all the information stored in the task list to the various input methods
+        /// so that the user can edit the task after one has been made.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (lstTask.SelectedIndex != -1)
@@ -165,6 +205,12 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Delete" button.
+        /// It deletes the currently selected task and clears the selected item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = lstTask.SelectedIndex;
@@ -184,6 +230,13 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is called every time the user clicks different items in the list.
+        /// It checks if the user has an item selected, if so the "Edit" and "Delete" buttons
+        /// become clickable, otherwise they become not clickable.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstTask_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstTask.SelectedIndex >= 0)
@@ -196,6 +249,12 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method checks if keys are pressed on the keyboard, and if
+        /// the combination is ctrl+n it makes a new file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.N)
@@ -204,6 +263,13 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "New" button.
+        /// It creates a new file because it calls "InitializeGUI();" which
+        /// creates a new TaskManager object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuFileNew_Click(object sender, EventArgs e)
         {
             CustomMessageForm dlg = new CustomMessageForm("New file", "Are you sure you want a new file?" +
@@ -216,6 +282,12 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Open data file" button.
+        /// It opens the "Tasks.txt" file if it exists and loads the data to the program.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuFileOpen_Click(object sender, EventArgs e)
         {
             bool ok = taskMngr.ReadDataFromFile(fileName);
@@ -232,6 +304,12 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Save data file" button.
+        /// It saves the data to the "Tasks.txt" file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuFileSave_Click(object sender, EventArgs e)
         {
             bool ok = taskMngr.WriteDataToFile(fileName);
@@ -249,17 +327,35 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "Exit" button.
+        /// It closes the program.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuFileExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// This method is for when the user clicks the "About" button.
+        /// It opens an about box diplaying info about the program.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuHelpAbout_Click(object sender, EventArgs e)
         {
             AboutBox dlg = new AboutBox();
             dlg.ShowDialog();
         }
 
+        /// <summary>
+        /// This method is called when the program is closing, it gives a prompt if you want
+        /// to exit or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CustomMessageForm dlg = new CustomMessageForm("Exit program", "Are you sure you want to exit?" +
@@ -272,6 +368,11 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        /// This method reads the input and validates them
+        /// and also sends a boolean that is either true or false depening on the validation.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ReadInput()
         {
             string taskText = txtTask.Text.Trim();
@@ -288,6 +389,11 @@ namespace Assignment6
             return ok;
         }
 
+        /// <summary>
+        /// This method validates the task input so that you can't leave
+        /// empty spaces or nothing in the task description.
+        /// </summary>
+        /// <returns>true or false</returns>
         private bool ValidateTask()
         {
             bool taskOK = true;
