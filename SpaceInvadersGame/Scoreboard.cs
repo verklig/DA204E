@@ -19,61 +19,37 @@ namespace SpaceInvadersGame
 
         public void ShowWin() 
         {
-            foreach (Control c in form.Controls)
+            foreach (Control control in form.Controls)
             {
-                if (c is Label && c.Name == "lblFinish")
+                if (control is Label && control.Name == "lblFinish")
                 {
-                    Label lbl = (Label)c;
-                    lbl.Text = "  You Won!" + "\n"
-                             + "Score: " + form.Points.ToString();
-                    form.StartScoreboardTimer(true);
+                    Label lbl = (Label)control;
+                    lbl.Text = "You Won!" + "\n"
+                             + "Score: " + form.Points.ToString() + "\n\n"
+                             + "Press ENTER to restart";
+                    form.StartBlinkTimer(true);
                 }
                 else
                 {
-                    c.Visible = false;
-                }
-            }
-
-            foreach (Control c in form.Controls)
-            {
-                if (c is Label && c.Name == "lblRestart")
-                {
-                    Label lbl = (Label)c;
-                    lbl.Text = "Press ENTER to restart";
-                }
-                else
-                {
-                    c.Visible = false;
+                    control.Visible = false;
                 }
             }
         }
 
         public void ShowLoss()
         {
-            foreach (Control c in form.Controls)
+            foreach (Control control in form.Controls)
             {
-                if (c is Label && c.Name == "lblFinish")
+                if (control is Label && control.Name == "lblFinish")
                 {
-                    Label lbl = (Label)c;
-                    lbl.Text = "Game Over!";
-                    form.StartScoreboardTimer(true);
+                    Label lbl = (Label)control;
+                    lbl.Text = "Game Over!" + "\n\n"
+                             + "Press ENTER to restart";
+                    form.StartBlinkTimer(true);
                 }
                 else
                 {
-                    c.Visible = false;
-                }
-            }
-
-            foreach (Control c in form.Controls)
-            {
-                if (c is Label && c.Name == "lblRestart")
-                {
-                    Label lbl = (Label)c;
-                    lbl.Text = "Press ENTER to restart";
-                }
-                else
-                {
-                    c.Visible = false;
+                    control.Visible = false;
                 }
             }
         }

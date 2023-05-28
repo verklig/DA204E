@@ -33,7 +33,6 @@ namespace SpaceInvadersGame
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblLives = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.playerTimer = new System.Windows.Forms.Timer(this.components);
@@ -46,8 +45,9 @@ namespace SpaceInvadersGame
             this.pbLife1 = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.lblFinish = new System.Windows.Forms.Label();
-            this.scoreboardTimer = new System.Windows.Forms.Timer(this.components);
-            this.lblRestart = new System.Windows.Forms.Label();
+            this.blinkTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblPause = new System.Windows.Forms.Label();
+            this.lblBar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLife2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLife1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
@@ -56,6 +56,7 @@ namespace SpaceInvadersGame
             // lblLives
             // 
             this.lblLives.AutoSize = true;
+            this.lblLives.BackColor = System.Drawing.Color.Transparent;
             this.lblLives.Font = new System.Drawing.Font("Retro Gaming", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLives.ForeColor = System.Drawing.Color.White;
             this.lblLives.Location = new System.Drawing.Point(12, 726);
@@ -68,6 +69,7 @@ namespace SpaceInvadersGame
             // lblScore
             // 
             this.lblScore.AutoSize = true;
+            this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Retro Gaming", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.Color.White;
             this.lblScore.Location = new System.Drawing.Point(660, 726);
@@ -114,66 +116,81 @@ namespace SpaceInvadersGame
             // 
             // pbLife2
             // 
+            this.pbLife2.BackColor = System.Drawing.Color.Transparent;
             this.pbLife2.Image = global::SpaceInvadersGame.Properties.Resources.heart;
             this.pbLife2.Location = new System.Drawing.Point(120, 721);
             this.pbLife2.Name = "pbLife2";
             this.pbLife2.Size = new System.Drawing.Size(30, 30);
-            this.pbLife2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLife2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLife2.TabIndex = 4;
             this.pbLife2.TabStop = false;
             // 
             // pbLife1
             // 
+            this.pbLife1.BackColor = System.Drawing.Color.Transparent;
             this.pbLife1.Image = global::SpaceInvadersGame.Properties.Resources.heart;
             this.pbLife1.Location = new System.Drawing.Point(84, 721);
             this.pbLife1.Name = "pbLife1";
             this.pbLife1.Size = new System.Drawing.Size(30, 30);
-            this.pbLife1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLife1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLife1.TabIndex = 3;
             this.pbLife1.TabStop = false;
             // 
             // pbPlayer
             // 
+            this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.Image = global::SpaceInvadersGame.Properties.Resources.spaceship;
-            this.pbPlayer.Location = new System.Drawing.Point(360, 650);
+            this.pbPlayer.Location = new System.Drawing.Point(367, 650);
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.Size = new System.Drawing.Size(50, 50);
-            this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
             // 
             // lblFinish
             // 
-            this.lblFinish.AutoSize = true;
-            this.lblFinish.BackColor = System.Drawing.Color.Black;
+            this.lblFinish.BackColor = System.Drawing.Color.Transparent;
+            this.lblFinish.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFinish.Font = new System.Drawing.Font("Retro Gaming", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFinish.ForeColor = System.Drawing.Color.White;
-            this.lblFinish.Location = new System.Drawing.Point(270, 300);
+            this.lblFinish.Location = new System.Drawing.Point(0, 0);
             this.lblFinish.Name = "lblFinish";
-            this.lblFinish.Size = new System.Drawing.Size(0, 44);
+            this.lblFinish.Size = new System.Drawing.Size(784, 761);
             this.lblFinish.TabIndex = 5;
             this.lblFinish.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblFinish.UseCompatibleTextRendering = true;
             this.lblFinish.Visible = false;
             // 
-            // scoreboardTimer
+            // blinkTimer
             // 
-            this.scoreboardTimer.Interval = 800;
-            this.scoreboardTimer.Tick += new System.EventHandler(this.ScoreboardBlink);
+            this.blinkTimer.Interval = 750;
+            this.blinkTimer.Tick += new System.EventHandler(this.Blink);
             // 
-            // lblRestart
+            // lblPause
             // 
-            this.lblRestart.AutoSize = true;
-            this.lblRestart.BackColor = System.Drawing.Color.Black;
-            this.lblRestart.Font = new System.Drawing.Font("Retro Gaming", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRestart.ForeColor = System.Drawing.Color.White;
-            this.lblRestart.Location = new System.Drawing.Point(135, 425);
-            this.lblRestart.Name = "lblRestart";
-            this.lblRestart.Size = new System.Drawing.Size(0, 44);
-            this.lblRestart.TabIndex = 6;
-            this.lblRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblRestart.UseCompatibleTextRendering = true;
-            this.lblRestart.Visible = false;
+            this.lblPause.BackColor = System.Drawing.Color.Transparent;
+            this.lblPause.Font = new System.Drawing.Font("Retro Gaming", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPause.ForeColor = System.Drawing.Color.White;
+            this.lblPause.Location = new System.Drawing.Point(12, 724);
+            this.lblPause.Name = "lblPause";
+            this.lblPause.Size = new System.Drawing.Size(760, 26);
+            this.lblPause.TabIndex = 6;
+            this.lblPause.Text = "Press ESCAPE to pause";
+            this.lblPause.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPause.UseCompatibleTextRendering = true;
+            // 
+            // lblBar
+            // 
+            this.lblBar.BackColor = System.Drawing.Color.Black;
+            this.lblBar.Font = new System.Drawing.Font("Retro Gaming", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBar.ForeColor = System.Drawing.Color.Black;
+            this.lblBar.Location = new System.Drawing.Point(-7, 718);
+            this.lblBar.Name = "lblBar";
+            this.lblBar.Size = new System.Drawing.Size(798, 59);
+            this.lblBar.TabIndex = 7;
+            this.lblBar.Text = "Press ESCAPE to pause";
+            this.lblBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBar.UseCompatibleTextRendering = true;
             // 
             // MainForm
             // 
@@ -181,15 +198,16 @@ namespace SpaceInvadersGame
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 761);
-            this.Controls.Add(this.lblRestart);
-            this.Controls.Add(this.lblFinish);
             this.Controls.Add(this.pbLife2);
             this.Controls.Add(this.pbLife1);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblLives);
             this.Controls.Add(this.pbPlayer);
+            this.Controls.Add(this.lblPause);
+            this.Controls.Add(this.lblBar);
+            this.Controls.Add(this.lblFinish);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = global::SpaceInvadersGame.Properties.Resources.invader_icon_transparent;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -218,8 +236,9 @@ namespace SpaceInvadersGame
         private System.Windows.Forms.Timer laserDetectionTimer;
         private System.Windows.Forms.Timer monitorTimer;
         private System.Windows.Forms.Label lblFinish;
-        private System.Windows.Forms.Timer scoreboardTimer;
-        private System.Windows.Forms.Label lblRestart;
+        private System.Windows.Forms.Timer blinkTimer;
+        private System.Windows.Forms.Label lblPause;
+        private System.Windows.Forms.Label lblBar;
     }
 }
 

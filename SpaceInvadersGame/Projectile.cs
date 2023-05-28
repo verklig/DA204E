@@ -26,11 +26,11 @@ namespace SpaceInvadersGame
 
         public void FireProjectile()
         {
-            foreach (Control c in form.Controls)
+            foreach (Control control in form.Controls)
             {
-                if (c is PictureBox && c.Name == "Bullet")
+                if (control is PictureBox && control.Name == "Bullet")
                 {
-                    PictureBox bullet = (PictureBox)c;
+                    PictureBox bullet = (PictureBox)control;
                     bullet.Top -= 5;
 
                     if (bullet.Location.Y <= 0)
@@ -38,11 +38,11 @@ namespace SpaceInvadersGame
                         form.Controls.Remove(bullet);
                     }
 
-                    foreach (Control ct in form.Controls)
+                    foreach (Control control2 in form.Controls)
                     {
-                        if (ct is PictureBox && ct.Name == "Laser")
+                        if (control2 is PictureBox && control2.Name == "Laser")
                         {
-                            PictureBox laser = (PictureBox)ct;
+                            PictureBox laser = (PictureBox)control2;
 
                             if (bullet.Bounds.IntersectsWith(laser.Bounds))
                             {
@@ -54,11 +54,11 @@ namespace SpaceInvadersGame
                         }
                     }
 
-                    foreach (Control ctrl in form.Controls)
+                    foreach (Control control3 in form.Controls)
                     {
-                        if (ctrl is PictureBox && ctrl.Name.StartsWith("Invader"))
+                        if (control3 is PictureBox && control3.Name.StartsWith("Invader"))
                         {
-                            PictureBox invader = (PictureBox)ctrl;
+                            PictureBox invader = (PictureBox)control3;
 
                             if (bullet.Bounds.IntersectsWith(invader.Bounds) && !form.Touched(invader))
                             {

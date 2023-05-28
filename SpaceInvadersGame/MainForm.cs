@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace SpaceInvadersGame
 {
@@ -22,12 +24,16 @@ namespace SpaceInvadersGame
         private Scoreboard scoreboard;
 
         private const int wallLimit = 732;
-
         private int points = 0;
+        private bool fired;
         private bool isGameActive;
+        private bool isGamePaused;
 
+        public bool Fired { get { return fired; } set { fired = value; } }
         public int Points { get { return points; } set { points = value; } }
         public int GetWallLimit { get { return wallLimit; } }
+        public bool GetIsGameActive { get { return isGameActive; } }
+        public bool GetIsGamePaused { get { return isGamePaused; } }
 
         public MainForm() 
         {
@@ -38,59 +44,113 @@ namespace SpaceInvadersGame
 
         private void InitializeGame()
         {
-            ResetGame();
+            ResetTimers();
+
+            this.Controls.Clear();
+
+            this.Controls.Add(pbPlayer);
+            this.Controls.Add(pbLife1);
+            this.Controls.Add(pbLife2);
+            this.Controls.Add(lblScore);
+            this.Controls.Add(lblLives);
+            this.Controls.Add(lblPause);
+            this.Controls.Add(lblFinish);
 
             player = new Player(this, pbPlayer);
             enemy = new Enemy(this);
             projectile = new Projectile(this, enemy);
             scoreboard = new Scoreboard(this);
 
+            fired = false;
             isGameActive = true;
+            isGamePaused = false;
             points = 0;
             lblFinish.Text = "";
-            lblRestart.Text = "";
+            lblScore.Text = "Score: 0";
+            lblLives.Text = "Lives:";
+            lblPause.Text = "Press ESCAPE to pause";
             lblFinish.Visible = false;
-            lblRestart.Visible = false;
             lblScore.Visible = true;
             lblLives.Visible = true;
+            lblPause.Visible = true;
+            lblBar.Visible = true;
             pbLife1.Visible = true;
             pbLife2.Visible = true;
             pbPlayer.Visible = true;
 
-            StartScoreboardTimer(false);
+            StartBlinkTimer(false);
 
+            player.ResetPlayerLocation();
             enemy.AddEmemies(this);
             enemy.SpawnEnemies();
         }
 
-        private void ResetGame()
+        private void ResetTimers()
         {
+            playerTimer.Dispose();
+            projectileTimer.Dispose();
+            invaderTimer.Dispose();
+            laserFrequencyTimer.Dispose();
+            laserDetectionTimer.Dispose();
+            monitorTimer.Dispose();
 
+            playerTimer = new Timer();
+            projectileTimer = new Timer();
+            invaderTimer = new Timer();
+            laserFrequencyTimer = new Timer();
+            laserDetectionTimer = new Timer();
+            monitorTimer = new Timer();
+
+            playerTimer.Interval = 10;
+            projectileTimer.Interval = 10;
+            invaderTimer.Interval = 10;
+            laserFrequencyTimer.Interval = 500;
+            laserDetectionTimer.Interval = 1;
+            monitorTimer.Interval = 1;
+
+            playerTimer.Tick += PlayerMove;
+            projectileTimer.Tick += FireProjectile;
+            invaderTimer.Tick += InvaderMove;
+            laserFrequencyTimer.Tick += LaserFrequency;
+            laserDetectionTimer.Tick += DetectLaser;
+            monitorTimer.Tick += Monitor;
+
+            playerTimer.Start();
+            projectileTimer.Start();
+            invaderTimer.Start();
+            laserFrequencyTimer.Start();
+            laserDetectionTimer.Start();
+            monitorTimer.Stop();
         }
 
         private void AddCustomFont()
         {
-            Font customFont = Program.GetCustomFont(Properties.Resources.Retro_Gaming, 12, FontStyle.Regular);
-            Font customFont2 = Program.GetCustomFont(Properties.Resources.Retro_Gaming, 24, FontStyle.Regular);
-            lblLives.Font = customFont;
-            lblScore.Font = customFont;
-            lblFinish.Font = customFont2;
-            lblRestart.Font = customFont2;
+            Font customFont = Program.GetCustomFont(Resources.Retro_Gaming, 10, FontStyle.Regular);
+            Font customFont2 = Program.GetCustomFont(Resources.Retro_Gaming, 12, FontStyle.Regular);
+            Font customFont3 = Program.GetCustomFont(Resources.Retro_Gaming, 24, FontStyle.Regular);
+
+            lblPause.Font = customFont;
+            lblLives.Font = customFont2;
+            lblScore.Font = customFont2;
+            lblFinish.Font = customFont3;
         }
 
         public void CheckForWinner()
         {
             int count = 0;
 
-            foreach (Control c in this.Controls)
+            foreach (Control control in this.Controls)
             {
-                if (c is PictureBox && c.Name.StartsWith("Invader"))
+                if (control is PictureBox && control.Name.StartsWith("Invader"))
                 {
                     count++;
                 }
             }
 
-            if (count == 0) YouWon();
+            if (count == 0) 
+            {
+                YouWon();
+            }
         }
 
         public void YouWon()
@@ -121,9 +181,9 @@ namespace SpaceInvadersGame
             scoreboard.ShowLoss();
         }
 
-        public void Collided(PictureBox a)
+        public void Collided(PictureBox pb)
         {
-            if (a.Bounds.IntersectsWith(pbPlayer.Bounds))
+            if (pb.Bounds.IntersectsWith(pbPlayer.Bounds))
             {
                 GameOver();
             }
@@ -134,34 +194,47 @@ namespace SpaceInvadersGame
             lblScore.Text = "Score: " + pts.ToString();
         }
 
-        public bool Touched(PictureBox invader)
+        public bool Touched(PictureBox pb)
         {
-            return invader.Location.X <= 0 || invader.Location.X >= wallLimit;
+            return pb.Location.X <= 0 || pb.Location.X >= wallLimit;
         }
 
-        public void StartScoreboardTimer(bool setting)
+        public void StartBlinkTimer(bool setting)
         {
             if (setting)
             {
-                scoreboardTimer.Start();
+                blinkTimer.Start();
             }
             else
             {
-                scoreboardTimer.Stop();
+                blinkTimer.Stop();
             }
         }
 
-        private void ScoreboardBlink(object sender, EventArgs e)
+        private void Blink(object sender, EventArgs e)
         {
-            if (lblFinish.Visible && lblRestart.Visible)
+            if (!isGameActive)
             {
-                lblFinish.Visible = false;
-                lblRestart.Visible = false;
+                if (lblFinish.Visible)
+                {
+                    lblFinish.Visible = false;
+                }
+                else
+                {
+                    lblFinish.Visible = true;
+                }
             }
-            else
+
+            if (isGameActive)
             {
-                lblFinish.Visible = true;
-                lblRestart.Visible = true;
+                if (lblPause.Visible)
+                {
+                    lblPause.Visible = false;
+                }
+                else
+                {
+                    lblPause.Visible = true;
+                }
             }
         }
 
@@ -187,7 +260,7 @@ namespace SpaceInvadersGame
         {
             player.KeyPressed(e.KeyCode);
 
-            if (e.KeyCode == Keys.Space && isGameActive)
+            if (e.KeyCode == Keys.Space && !fired && isGameActive && !isGamePaused)
             {
                 projectile.FireProjectile();
             }
@@ -195,6 +268,34 @@ namespace SpaceInvadersGame
             if (e.KeyCode == Keys.Enter && !isGameActive)
             {
                 InitializeGame();
+            }
+
+            if (e.KeyCode == Keys.Escape && isGameActive && !isGamePaused)
+            {
+                isGamePaused = true;
+
+                playerTimer.Stop();
+                projectileTimer.Stop();
+                invaderTimer.Stop();
+                laserFrequencyTimer.Stop();
+                laserDetectionTimer.Stop();
+
+                lblPause.Text = "PAUSED";
+                StartBlinkTimer(true);
+            }
+            else if (e.KeyCode == Keys.Escape && isGameActive && isGamePaused)
+            {
+                isGamePaused = false;
+
+                playerTimer.Start();
+                projectileTimer.Start();
+                invaderTimer.Start();
+                laserFrequencyTimer.Start();
+                laserDetectionTimer.Start();
+
+                lblPause.Text = "Press ESCAPE to pause";
+                StartBlinkTimer(false);
+                lblPause.Visible = true;
             }
         }
 
@@ -229,3 +330,4 @@ namespace SpaceInvadersGame
         }
     }
 }
+

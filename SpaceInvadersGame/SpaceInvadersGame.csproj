@@ -86,31 +86,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Retro Gaming.ttf" />
-    <None Include="Resources\spaceship.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\invader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\invader2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\invader3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\invader4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\invader5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\heart.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\laser.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader_icon_transparent.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spaceship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invader2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

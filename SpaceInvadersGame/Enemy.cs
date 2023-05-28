@@ -24,10 +24,10 @@ namespace SpaceInvadersGame
         private int x;
         private int y;
         private int space;
-        private int speed = -1;
-        private int left = -1;
-        private int top = 0;
-        private int cnt = 0;
+        private int speed;
+        private int left;
+        private int top;
+        private int count;
 
         public List<PictureBox> GetInvaders { get { return invaders; } }
 
@@ -36,6 +36,8 @@ namespace SpaceInvadersGame
             invaders = new List<PictureBox>();
             delay = new List<PictureBox>();
 
+            form = mainForm;
+
             width = 40;
             height = 40;
             columns = 10;
@@ -43,8 +45,10 @@ namespace SpaceInvadersGame
             space = 10;
             x = 140;
             y = 0;
-
-            form = mainForm;
+            speed = -1;
+            left = -1;
+            top = 0;
+            count = 0;
         }
 
         public void CreateInvader1(Form form)
@@ -108,39 +112,49 @@ namespace SpaceInvadersGame
             {
 
                 if (i == 0)
+                {
                     for (int j = 0; j < columns; j++)
                     {
                         CreateInvader2(form);
                         x += width + space;
                     }
+                }
 
                 if (i == 1)
+                {
                     for (int j = 0; j < columns; j++)
                     {
                         CreateInvader5(form);
                         x += width + space;
                     }
+                }
 
                 if (i == 2)
+                {
                     for (int j = 0; j < columns; j++)
                     {
                         CreateInvader3(form);
                         x += width + space;
                     }
+                }
 
                 if (i == 3)
+                {
                     for (int j = 0; j < columns; j++)
                     {
                         CreateInvader4(form);
                         x += width + space;
                     }
+                }
 
                 if (i == 4)
+                {
                     for (int j = 0; j < columns; j++)
                     {
                         CreateInvader1(form);
                         x += width + space;
                     }
+                }
 
                 y += height + space;
                 x = 140;
@@ -149,31 +163,31 @@ namespace SpaceInvadersGame
 
         public void SpawnEnemies()
         {
-            foreach (Control c in form.Controls)
+            foreach (Control control in form.Controls)
             {
-                if (c is PictureBox && c.Name == "Invader1")
+                if (control is PictureBox && control.Name == "Invader1")
                 {
-                    PictureBox invader1 = (PictureBox)c;
+                    PictureBox invader1 = (PictureBox)control;
                     invaders.Add(invader1);
                 }
-                else if (c is PictureBox && c.Name == "Invader2")
+                else if (control is PictureBox && control.Name == "Invader2")
                 {
-                    PictureBox invader2 = (PictureBox)c;
+                    PictureBox invader2 = (PictureBox)control;
                     invaders.Add(invader2);
                 }
-                else if (c is PictureBox && c.Name == "Invader3")
+                else if (control is PictureBox && control.Name == "Invader3")
                 {
-                    PictureBox invader3 = (PictureBox)c;
+                    PictureBox invader3 = (PictureBox)control;
                     invaders.Add(invader3);
                 }
-                else if (c is PictureBox && c.Name == "Invader4")
+                else if (control is PictureBox && control.Name == "Invader4")
                 {
-                    PictureBox invader4 = (PictureBox)c;
+                    PictureBox invader4 = (PictureBox)control;
                     invaders.Add(invader4);
                 }
-                else if (c is PictureBox && c.Name == "Invader5")
+                else if (control is PictureBox && control.Name == "Invader5")
                 {
-                    PictureBox invader5 = (PictureBox)c;
+                    PictureBox invader5 = (PictureBox)control;
                     invaders.Add(invader5);
                 }
             }
@@ -195,15 +209,15 @@ namespace SpaceInvadersGame
 
             if (form.Touched(invader))
             {
-                top = 1; left = 0; cnt++;
+                top = 1; left = 0; count++;
 
-                if (cnt == size)
+                if (count == size)
                 {
                     top = 0; left = speed * (-1); form.StartMonitor(true);
                 }
-                else if (cnt == size * 2)
+                else if (count == size * 2)
                 {
-                    top = 0; left = speed; cnt = 0; form.StartMonitor(true);
+                    top = 0; left = speed; count = 0; form.StartMonitor(true);
                 }
             }
         }

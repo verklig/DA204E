@@ -118,27 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="invader3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invader3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="invader5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invader5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="invader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invader2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="invader4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invader4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="invader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="spaceship" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\spaceship.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\heart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,5 +126,29 @@
   </data>
   <data name="Retro_Gaming" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Retro Gaming.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="invader_icon_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader_icon_transparent.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invader2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invader3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invader4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invader5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invader5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spaceship" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spaceship.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

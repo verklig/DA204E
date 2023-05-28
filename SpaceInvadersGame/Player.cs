@@ -15,20 +15,18 @@ namespace SpaceInvadersGame
         private Projectile projectile;
         private PictureBox player;
 
-        const int x = 360, y = 650;
+        private const int x = 367;
+        private const int y = 650;
 
         private bool moveLeft;
         private bool moveRight;
-        private bool fired;
 
         public Player(MainForm mainForm, PictureBox player)
         {
+            form = mainForm;
             this.player = player;
             moveLeft = false;
             moveRight = false;
-            fired = false;
-
-            form = mainForm;
         }
 
         public void KeyPressed(Keys keyCode)
@@ -41,11 +39,11 @@ namespace SpaceInvadersGame
             {
                 moveRight = true;
             }
-            else if (keyCode == Keys.Space && !fired)
+            else if (keyCode == Keys.Space && !form.Fired && form.GetIsGameActive && !form.GetIsGamePaused)
             {
                 projectile = new Projectile(form);
                 projectile.PlayerBullet(player);
-                fired = true;
+                form.Fired = true;
             }
         }
 
@@ -61,13 +59,13 @@ namespace SpaceInvadersGame
             }
             else if (keyCode == Keys.Space)
             {
-                fired = false;
+                form.Fired = false;
             }
         }
 
         public void PlayerMove()
         {
-            if (moveLeft && player.Location.X >= 1)
+            if (moveLeft && player.Location.X >= 2)
             {
                 player.Left -= 2;
             }
@@ -79,11 +77,11 @@ namespace SpaceInvadersGame
 
         public void DetectLaser()
         {
-            foreach (Control c in form.Controls)
+            foreach (Control control in form.Controls)
             {
-                if (c is PictureBox && c.Name == "Laser")
+                if (control is PictureBox && control.Name == "Laser")
                 {
-                    PictureBox laser = (PictureBox)c;
+                    PictureBox laser = (PictureBox)control;
                     laser.Top += 5;
 
                     if (laser.Location.Y >= form.GetWallLimit)
@@ -100,15 +98,20 @@ namespace SpaceInvadersGame
             }
         }
 
-        private void LoseLife()
+        public void ResetPlayerLocation()
         {
             player.Location = new Point(x, y);
+        }
 
-            foreach (Control c in form.Controls)
+        private void LoseLife()
+        {
+            ResetPlayerLocation();
+
+            foreach (Control control in form.Controls)
             {
-                if (c is PictureBox && c.Name.Contains("Life") && c.Visible == true)
+                if (control is PictureBox && control.Name.Contains("Life") && control.Visible == true)
                 {
-                    PictureBox player = (PictureBox)c;
+                    PictureBox player = (PictureBox)control;
                     player.Visible = false;
                     return;
                 }
