@@ -6,7 +6,9 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,11 @@ namespace SpaceInvadersGame
         private Enemy enemy;
         private Projectile projectile;
         private Scoreboard scoreboard;
+
+        private Stream playerBulletSound = Resources.bulletSound;
+        private Stream playerHurtSound = Resources.bulletSound;
+        private Stream enemyLaserSound = Resources.bulletSound;
+        private Stream enemyHurtSound = Resources.bulletSound;
 
         private const int wallLimit = 732;
         private int points = 0;
@@ -45,16 +52,7 @@ namespace SpaceInvadersGame
         private void InitializeGame()
         {
             ResetTimers();
-
-            this.Controls.Clear();
-
-            this.Controls.Add(pbPlayer);
-            this.Controls.Add(pbLife1);
-            this.Controls.Add(pbLife2);
-            this.Controls.Add(lblScore);
-            this.Controls.Add(lblLives);
-            this.Controls.Add(lblPause);
-            this.Controls.Add(lblFinish);
+            ResetControls();
 
             player = new Player(this, pbPlayer);
             enemy = new Enemy(this);
@@ -79,10 +77,31 @@ namespace SpaceInvadersGame
             pbPlayer.Visible = true;
 
             StartBlinkTimer(false);
-
             player.ResetPlayerLocation();
             enemy.AddEmemies(this);
             enemy.SpawnEnemies();
+        }
+
+        private void PlaySound(Stream soundFile)
+        {
+            using (SoundPlayer sp = new SoundPlayer(soundFile))
+            {
+                sp.Stream.Position = 0;
+                sp.Play();
+            }
+        }
+
+        private void ResetControls()
+        {
+            this.Controls.Clear();
+            this.Controls.Add(pbPlayer);
+            this.Controls.Add(pbLife1);
+            this.Controls.Add(pbLife2);
+            this.Controls.Add(lblScore);
+            this.Controls.Add(lblLives);
+            this.Controls.Add(lblPause);
+            this.Controls.Add(lblBar);
+            this.Controls.Add(lblFinish);
         }
 
         private void ResetTimers()
@@ -260,9 +279,9 @@ namespace SpaceInvadersGame
         {
             player.KeyPressed(e.KeyCode);
 
-            if (e.KeyCode == Keys.Space && !fired && isGameActive && !isGamePaused)
+            if (e.KeyCode == Keys.Space && fired && isGameActive && !isGamePaused)
             {
-                projectile.FireProjectile();
+                PlaySound(playerBulletSound);
             }
 
             if (e.KeyCode == Keys.Enter && !isGameActive)
