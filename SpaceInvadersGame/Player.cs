@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,22 @@ namespace SpaceInvadersGame
         private Projectile projectile;
         private PictureBox player;
 
+        private Stream playerShootSound;
+        private Stream playerHitSound;
+
         private const int x = 367;
         private const int y = 650;
 
         private bool moveLeft;
         private bool moveRight;
 
-        public Player(MainForm mainForm, PictureBox player)
+        public Player(MainForm mainForm, PictureBox player, Stream playerShootSound, Stream playerHitSound)
         {
             form = mainForm;
             this.player = player;
+            this.playerShootSound = playerShootSound;
+            this.playerHitSound = playerHitSound;
+
             moveLeft = false;
             moveRight = false;
         }
@@ -43,6 +50,7 @@ namespace SpaceInvadersGame
             {
                 projectile = new Projectile(form);
                 projectile.PlayerBullet(player);
+                form.PlaySound(playerShootSound);
                 form.Fired = true;
             }
         }
@@ -113,6 +121,7 @@ namespace SpaceInvadersGame
                 {
                     PictureBox player = (PictureBox)control;
                     player.Visible = false;
+                    form.PlaySound(playerHitSound);
                     return;
                 }
             }

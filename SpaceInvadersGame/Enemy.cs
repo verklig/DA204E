@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace SpaceInvadersGame
         private MainForm form;
         private Projectile projectile;
 
+        private Stream enemyShootSound;
+        private Stream enemyHitSound;
+
         private int width;
         private int height;
         private int columns;
@@ -31,12 +35,14 @@ namespace SpaceInvadersGame
 
         public List<PictureBox> GetInvaders { get { return invaders; } }
 
-        public Enemy(MainForm mainForm)
+        public Enemy(MainForm mainForm, Stream enemyShootSound, Stream enemyHitSound)
         {
             invaders = new List<PictureBox>();
             delay = new List<PictureBox>();
 
             form = mainForm;
+            this.enemyShootSound = enemyShootSound;
+            this.enemyHitSound = enemyHitSound;
 
             width = 40;
             height = 40;
@@ -232,12 +238,14 @@ namespace SpaceInvadersGame
             {
                 choice = rand.Next(invaders.Count);
                 projectile.EnemyLaser(invaders[choice]);
+                // form.PlaySound(enemyShootSound);
             }
         }
 
         public void RemoveInvaders(PictureBox invader)
         {
             invaders.Remove(invader);
+            form.PlaySound(enemyHitSound);
         }
 
         public void AddDelayed(PictureBox invader)
