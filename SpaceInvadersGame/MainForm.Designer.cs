@@ -48,6 +48,7 @@ namespace SpaceInvadersGame
             this.blinkTimer = new System.Windows.Forms.Timer(this.components);
             this.lblPause = new System.Windows.Forms.Label();
             this.lblBar = new System.Windows.Forms.Label();
+            this.bulletFrequencyTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbLife2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLife1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
@@ -81,31 +82,26 @@ namespace SpaceInvadersGame
             // 
             // playerTimer
             // 
-            this.playerTimer.Enabled = true;
             this.playerTimer.Interval = 10;
             this.playerTimer.Tick += new System.EventHandler(this.PlayerMove);
             // 
             // projectileTimer
             // 
-            this.projectileTimer.Enabled = true;
             this.projectileTimer.Interval = 10;
             this.projectileTimer.Tick += new System.EventHandler(this.FireProjectile);
             // 
             // invaderTimer
             // 
-            this.invaderTimer.Enabled = true;
             this.invaderTimer.Interval = 10;
             this.invaderTimer.Tick += new System.EventHandler(this.InvaderMove);
             // 
             // laserFrequencyTimer
             // 
-            this.laserFrequencyTimer.Enabled = true;
             this.laserFrequencyTimer.Interval = 500;
             this.laserFrequencyTimer.Tick += new System.EventHandler(this.LaserFrequency);
             // 
             // laserDetectionTimer
             // 
-            this.laserDetectionTimer.Enabled = true;
             this.laserDetectionTimer.Interval = 1;
             this.laserDetectionTimer.Tick += new System.EventHandler(this.DetectLaser);
             // 
@@ -118,7 +114,7 @@ namespace SpaceInvadersGame
             // 
             this.pbLife2.BackColor = System.Drawing.Color.Transparent;
             this.pbLife2.Image = global::SpaceInvadersGame.Properties.Resources.heart;
-            this.pbLife2.Location = new System.Drawing.Point(120, 721);
+            this.pbLife2.Location = new System.Drawing.Point(84, 721);
             this.pbLife2.Name = "pbLife2";
             this.pbLife2.Size = new System.Drawing.Size(30, 30);
             this.pbLife2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -129,7 +125,7 @@ namespace SpaceInvadersGame
             // 
             this.pbLife1.BackColor = System.Drawing.Color.Transparent;
             this.pbLife1.Image = global::SpaceInvadersGame.Properties.Resources.heart;
-            this.pbLife1.Location = new System.Drawing.Point(84, 721);
+            this.pbLife1.Location = new System.Drawing.Point(120, 721);
             this.pbLife1.Name = "pbLife1";
             this.pbLife1.Size = new System.Drawing.Size(30, 30);
             this.pbLife1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -192,20 +188,24 @@ namespace SpaceInvadersGame
             this.lblBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBar.UseCompatibleTextRendering = true;
             // 
+            // bulletFrequencyTimer
+            // 
+            this.bulletFrequencyTimer.Tick += new System.EventHandler(this.BulletFrequency);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 761);
-            this.Controls.Add(this.pbLife2);
             this.Controls.Add(this.pbLife1);
+            this.Controls.Add(this.pbLife2);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblLives);
             this.Controls.Add(this.pbPlayer);
             this.Controls.Add(this.lblPause);
-            this.Controls.Add(this.lblBar);
             this.Controls.Add(this.lblFinish);
+            this.Controls.Add(this.lblBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = global::SpaceInvadersGame.Properties.Resources.invader_icon_transparent;
             this.MaximizeBox = false;
@@ -239,6 +239,7 @@ namespace SpaceInvadersGame
         private System.Windows.Forms.Timer blinkTimer;
         private System.Windows.Forms.Label lblPause;
         private System.Windows.Forms.Label lblBar;
+        private System.Windows.Forms.Timer bulletFrequencyTimer;
     }
 }
 

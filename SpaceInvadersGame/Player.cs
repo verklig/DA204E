@@ -24,6 +24,7 @@ namespace SpaceInvadersGame
 
         private bool moveLeft;
         private bool moveRight;
+        private bool canShoot;
 
         public Player(MainForm mainForm, PictureBox player, Stream playerShootSound, Stream playerHitSound)
         {
@@ -46,7 +47,7 @@ namespace SpaceInvadersGame
             {
                 moveRight = true;
             }
-            else if (keyCode == Keys.Space && !form.Fired && form.GetIsGameActive && !form.GetIsGamePaused)
+            else if (keyCode == Keys.Space && !form.Fired && form.GetIsGameActive && !form.GetIsGamePaused && canShoot)
             {
                 projectile = new Projectile(form);
                 projectile.PlayerBullet(player);
@@ -119,13 +120,26 @@ namespace SpaceInvadersGame
             {
                 if (control is PictureBox && control.Name.Contains("Life") && control.Visible == true)
                 {
-                    PictureBox player = (PictureBox)control;
-                    player.Visible = false;
+                    PictureBox life = (PictureBox)control;
+                    life.Visible = false;
                     form.PlaySound(playerHitSound);
                     return;
                 }
             }
+
             form.GameOver();
+        }
+
+        public void SetCanPlayerShoot(bool setting)
+        {
+            if (setting)
+            {
+                canShoot = true;
+            }
+            else
+            {
+                canShoot = false;
+            }
         }
     }
 }

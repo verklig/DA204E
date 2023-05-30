@@ -32,6 +32,8 @@ namespace SpaceInvadersGame
         private Stream winSound = Resources.congratulations;
         private Stream lostSound = Resources.gameover;
         private Stream pauseSound = Resources.pause;
+        private Stream menuSound = Resources.menu;
+        private Stream gameStartupSound = Resources.intro;
 
         private const int wallLimit = 732;
         private int points;
@@ -49,13 +51,7 @@ namespace SpaceInvadersGame
         {
             InitializeComponent();
             AddCustomFont();
-            UserReady();
-            InitializeGame();
-        }
-
-        private void UserReady()
-        {
-
+            StartIntro();
         }
 
         private void InitializeGame()
@@ -79,16 +75,32 @@ namespace SpaceInvadersGame
             lblFinish.Visible = false;
             lblScore.Visible = true;
             lblLives.Visible = true;
-            lblPause.Visible = true;
-            lblBar.Visible = true;
             pbLife1.Visible = true;
             pbLife2.Visible = true;
             pbPlayer.Visible = true;
+            lblPause.Visible = true;
+            lblBar.Visible = true;
 
             StartBlinkTimer(false);
             player.ResetPlayerLocation();
             enemy.AddEmemies(this);
             enemy.SpawnEnemies();
+        }
+
+        private void StartIntro()
+        {
+            lblFinish.Text = "Press ENTER to start game";
+            lblFinish.Visible = true;
+            lblScore.Visible = false;
+            lblLives.Visible = false;
+            pbLife1.Visible = false;
+            pbLife2.Visible = false;
+            pbPlayer.Visible = false;
+            lblPause.Visible = false;
+            lblBar.Visible = false;
+
+            PlaySound(gameStartupSound);
+            StartBlinkTimer(true);
         }
 
         public void PlaySound(Stream soundFile)
@@ -102,8 +114,8 @@ namespace SpaceInvadersGame
         {
             this.Controls.Clear();
             this.Controls.Add(pbPlayer);
-            this.Controls.Add(pbLife2);
             this.Controls.Add(pbLife1);
+            this.Controls.Add(pbLife2);
             this.Controls.Add(lblScore);
             this.Controls.Add(lblLives);
             this.Controls.Add(lblPause);
@@ -119,6 +131,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Dispose();
             laserDetectionTimer.Dispose();
             monitorTimer.Dispose();
+            bulletFrequencyTimer.Dispose();
 
             playerTimer = new Timer();
             projectileTimer = new Timer();
@@ -126,6 +139,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer = new Timer();
             laserDetectionTimer = new Timer();
             monitorTimer = new Timer();
+            bulletFrequencyTimer = new Timer();
 
             playerTimer.Interval = 10;
             projectileTimer.Interval = 10;
@@ -133,6 +147,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Interval = 500;
             laserDetectionTimer.Interval = 1;
             monitorTimer.Interval = 1;
+            bulletFrequencyTimer.Interval = 100;
 
             playerTimer.Tick += PlayerMove;
             projectileTimer.Tick += FireProjectile;
@@ -140,6 +155,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Tick += LaserFrequency;
             laserDetectionTimer.Tick += DetectLaser;
             monitorTimer.Tick += Monitor;
+            bulletFrequencyTimer.Tick += BulletFrequency;
 
             playerTimer.Start();
             projectileTimer.Start();
@@ -147,6 +163,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Start();
             laserDetectionTimer.Start();
             monitorTimer.Stop();
+            bulletFrequencyTimer.Start();
         }
 
         private void AddCustomFont()
@@ -189,6 +206,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Stop();
             laserDetectionTimer.Stop();
             monitorTimer.Stop();
+            bulletFrequencyTimer.Stop();
 
             PlaySound(winSound);
             scoreboard.ShowWin();
@@ -204,6 +222,7 @@ namespace SpaceInvadersGame
             laserFrequencyTimer.Stop();
             laserDetectionTimer.Stop();
             monitorTimer.Stop();
+            bulletFrequencyTimer.Stop();
 
             PlaySound(lostSound);
             scoreboard.ShowLoss();
@@ -224,7 +243,7 @@ namespace SpaceInvadersGame
 
         public bool Touched(PictureBox pb)
         {
-            return pb.Location.X <= 0 || pb.Location.X >= wallLimit;
+            return pb.Location.X <= 0 || pb.Location.X >= wallLimit + 10;
         }
 
         public void StartBlinkTimer(bool setting)
@@ -286,12 +305,22 @@ namespace SpaceInvadersGame
 
         private void FormKeyPressed(object sender, KeyEventArgs e)
         {
-            player.KeyPressed(e.KeyCode);
+
+            if (isGameActive)
+            {
+                player.KeyPressed(e.KeyCode);
+
+                if (e.KeyCode == Keys.Space)
+                {
+                    player.SetCanPlayerShoot(false);
+                    bulletFrequencyTimer.Start();
+                }
+            }
 
             if (e.KeyCode == Keys.Enter && !isGameActive)
             {
                 InitializeGame();
-                PlaySound(enemyHitSound);
+                PlaySound(menuSound);
             }
 
             if (e.KeyCode == Keys.Escape && isGameActive && !isGamePaused)
@@ -303,6 +332,7 @@ namespace SpaceInvadersGame
                 invaderTimer.Stop();
                 laserFrequencyTimer.Stop();
                 laserDetectionTimer.Stop();
+                bulletFrequencyTimer.Stop();
 
                 PlaySound(pauseSound);
                 lblPause.Text = "PAUSED";
@@ -317,6 +347,7 @@ namespace SpaceInvadersGame
                 invaderTimer.Start();
                 laserFrequencyTimer.Start();
                 laserDetectionTimer.Start();
+                bulletFrequencyTimer.Start();
 
                 PlaySound(pauseSound);
                 lblPause.Text = "Press ESCAPE to pause";
@@ -327,7 +358,10 @@ namespace SpaceInvadersGame
 
         private void FormKeyReleased(object sender, KeyEventArgs e)
         {
-            player.KeyReleased(e.KeyCode);
+            if (isGameActive)
+            {
+                player.KeyReleased(e.KeyCode);
+            }
         }
 
         private void PlayerMove(object sender, EventArgs e)
@@ -353,6 +387,12 @@ namespace SpaceInvadersGame
         private void LaserFrequency(object sender, EventArgs e)
         {
             enemy.RandomLazer();
+        }
+
+        private void BulletFrequency(object sender, EventArgs e)
+        {
+            player.SetCanPlayerShoot(true);
+            bulletFrequencyTimer.Stop();
         }
     }
 }
